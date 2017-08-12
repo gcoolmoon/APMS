@@ -26,13 +26,14 @@
 						</div>
 						<!-- Backlog -Box -Start-->
 						<div class="col-md-4">
-
 							<div class="well">
-								<h4 class="text-right">ProjectY</h4>
 								<h4 class="media-heading">
-									<a href="/viewTasks/id=${backlog.id}">BacklogItem 1</a>
+									<a href="/viewTasks/id=${backlog.id}">BacklogItem Title</a>
 								</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<p>backlog description</p>
+								<p>
+									<a href="#">Team members</a>
+								</p>
 								<ul class="list-inline list-unstyled">
 									<li data-toggle="tooltip" data-placement="top"
 										title="Hour Estimated"><span><i
@@ -41,40 +42,39 @@
 										title="Priority"><i
 										class="glyphicon glyphicon glyphicon-pushpin"></i>Priority|</span>
 									<span data-toggle="tooltip" data-placement="top" title="Status">
-										<i class="glyphicon glyphicon-eye-open"></i>Status|
+										<i class="glyphicon glyphicon-eye-open"></i>Status
 									</span>
-									<span><a data-toggle="modal" href="#backlogDetail"><i
-											class="glyphicon glyphicon-eye-open"></i>Update|</a></span>
-									<span data-toggle="tooltip" data-placement="top"
-										title="delete"><a href="/delete/backlogId"><i
-										class="glyphicon glyphicon glyphicon-pushpin"></i>Delete|</a></span>
 								</ul>
+								<p>
+									<a data-toggle="modal" href="#backlogDetail">Update</a>
+								</p>
 							</div>
 						</div>
 						<!-- Backlog-Box-End -->
 						<!-- Backlog -Box -Start-->
 						<div class="col-md-4">
 							<div class="well">
-								<h4 class="text-right">ProjectY</h4>
 								<h4 class="media-heading">
-									<a href="/viewTasks/id=${backlog.id}">BacklogItem 1</a>
+									<a href="/viewTasks/id=${backlog.id}">BacklogItem Title</a>
 								</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								<p>backlog description</p>
+								<p>
+									<a href="#">Team members</a>
+								</p>
 								<ul class="list-inline list-unstyled">
 									<li data-toggle="tooltip" data-placement="top"
 										title="Hour Estimated"><span><i
 											class="glyphicon glyphicon-time"></i> hour estimated|</span></li>
-
 									<span data-toggle="tooltip" data-placement="top"
 										title="Priority"><i
 										class="glyphicon glyphicon glyphicon-pushpin"></i>Priority|</span>
-
 									<span data-toggle="tooltip" data-placement="top" title="Status">
-										<i class="glyphicon glyphicon-eye-open"></i>Status|
+										<i class="glyphicon glyphicon-eye-open"></i>Status
 									</span>
-									<span><a data-toggle="modal" href="#backlogDetail"><i
-											class="glyphicon glyphicon-eye-open"></i>Update|</a></span>
 								</ul>
+								<p>
+									<a data-toggle="modal" href="#backlogDetail">Update</a>
+								</p>
 							</div>
 						</div>
 						<!-- Backlog-Box-End -->
@@ -154,7 +154,7 @@
 										<select class="form-control" id="priority">
 											<option>High</option>
 											<option>Medium</option>
-											<option>Low</option>											
+											<option>Low</option>
 										</select>
 									</div>
 								</div>

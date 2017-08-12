@@ -7,7 +7,11 @@
 	<title>APMS</title>
 	<link type="text/css" rel="stylesheet" href="/bootstrap-3.0.3/css/bootstrap.min.css"/>
 	<link type="text/css" rel="stylesheet" href="/css/main.css"/>
+	
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>	
 </head>
+
 <body>
 	<div class="container-fluid">
 		<div class="mainmenu-area">
