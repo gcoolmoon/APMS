@@ -11,10 +11,10 @@ public class ProjectController {
 //	@Autowired
 //	private ProjectService projectService;
 	
-	@RequestMapping("/index")
+	@RequestMapping("/projects")
 	public String setUpForm() {
 
-		return "";
+		return "/projects";
 	}
 
 }

@@ -1,3 +1,4 @@
+<%@ include file = "header.jsp" %>
 <!-- NavBar -->
 <div class="row no-margin">				
 	<div class="panel with-nav-tabs">
@@ -42,3 +43,4 @@
 		</div>
 	</div>
 </div>
+<%@ include file = "footer.jsp" %>
