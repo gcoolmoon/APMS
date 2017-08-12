@@ -15,13 +15,16 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+
 @Entity
 public class User {
+
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotEmpty
-	@Column(name="Emp_ID", unique=true, nullable=false)
+	@Column(name="SSO_ID", unique=true, nullable=false)
 	private String employeeId;
 	
 	@NotEmpty
@@ -44,7 +47,7 @@ public class User {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USER_USER_ROLE", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
-             inverseJoinColumns = { @JoinColumn(name = "USER_ROLE_ID") })
+             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
 
 	public Integer getId() {
@@ -55,13 +58,11 @@ public class User {
 		this.id = id;
 	}
 
-	
-
-	public String getEmployeeId() {
+	public String getSsoId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setSsoId(String employeeId) {
 		this.employeeId = employeeId;
 	}
 
@@ -101,9 +102,7 @@ public class User {
 		return userRoles;
 	}
 
-	public void setUserRoles(Set<UserRole> userRoles) {
+	public void setUserProfiles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
 	}
-
-
 }

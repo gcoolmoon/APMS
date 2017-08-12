@@ -8,7 +8,6 @@ public interface WorklogDao extends JpaRepository<WorkLog, Integer>  {
 //	public WorkLog get(int worklogId);
 //
 //	public List<WorkLog> getAll();
-//
 //	public List<WorkLog> getAllByTask(int taskId);
 //
 //	public void add(WorkLog worklog);

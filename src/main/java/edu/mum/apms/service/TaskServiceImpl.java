@@ -19,31 +19,33 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	@Transactional
 	public Task getTaskById(int taskId) {
-		return taskDao.get(taskId);
+		return taskDao.findOne(taskId);
 	}
 
 	@Override
 	@Transactional
 	public List<Task> getAllTaskByBacklog(int backlogId) {
-		return taskDao.getAllActiveByBacklog(backlogId);
+		//return taskDao.getAllActiveByBacklog(backlogId);
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public List<Task> getAllActiveTaskByBacklog(int backlogId) {
-		return taskDao.getAllActiveByBacklog(backlogId);
+		//return taskDao.getAllActiveByBacklog(backlogId);
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public void addTask(Task task) {
-		taskDao.add(task);
+		//taskDao.add(task);
 	}
 
 	@Override
 	@Transactional
 	public void updateTask(Task task) {
-		taskDao.edit(task);
+		//taskDao.edit(task);
 	}
 
 	@Override

@@ -23,14 +23,65 @@
 		<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	
+<!--  	<mvc:annotation-driven /> -->
+<!--     <context:component-scan base-package="edu.mum.apms" /> -->
+    
+ 
+<!--     <tx:annotation-driven transaction-manager="txManager"/> -->
+<!-- 	<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> -->
+<!-- 		<property name="sessionFactory" ref="sessionFactory" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!-- 		<property name="url" value="jdbc:mysql://localhost/apmsdb"/> -->
+<!--         <property name="username"  value="root"/> -->
+<!--         <property name="password" value=""/>    -->
+<!-- 	</bean> -->
 	
+<!-- 	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean"> -->
+<!-- 	 	<property name="properties"> -->
+<!-- 	 		<props> -->
+<!-- 	 			<prop key="hibernate.hbm2ddl.auto">create</prop> -->
+<!-- 	 			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> -->
+<!-- 	 			<prop key="connection.pool_size">1</prop> -->
+<!-- 	 			<prop key="hibernate.show_sql">true</prop> -->
+<!-- 	 			<prop key="hibernate.current_session_context_class">thread</prop> -->
+<!-- 	 			<prop key="hibernate.use_sql_comments">true</prop> -->
+<!-- 				<prop key="hibernate.format_sql">false</prop> -->
+<!-- 	 		</props> -->
+<!-- 	 	</property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="projectDao" class="edu.mum.apms.dao.ProjectDaoImpl"> -->
+<!-- 		<property name="session" ref="sessionFactory"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="featureDao" class="edu.mum.apms.dao.FeatureDaoImpl"> -->
+<!-- 		<property name="session" ref="sessionFactory"></property> -->
+<!-- 	</bean> -->
+        
+<!--     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> -->
+<!--     	<property name="dataSource" ref="dataSource"/> -->
+<!--     	<property name="hibernateProperties" ref="hibernateProperties"/> -->
+<!--     	<property name="packagesToScan" value="extraCredit.domain"></property> -->
+<!--     </bean> -->
 	
-	<!-- Lets us find resources (.html etc) through the default servlet -->
-	<mvc:default-servlet-handler/> 
+<!-- 		 Resolves views selected for rendering by @Controllers to .jsp resources  -->
+<!-- 		in the /WEB-INF/views directory --> 
+<!-- 	<bean -->
+<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+<!-- 		<property name="prefix" value="/WEB-INF/views/" /> -->
+<!-- 		<property name="suffix" value=".jsp" /> -->
+<!-- 	</bean> -->
 	
-		<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
-		up static resources in the ${webappRoot}/resources/ directory -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+<!-- 	<bean id="Release" class="edu.mum.apms.model"/> -->
+	
+<!-- 	 Lets us find resources (.html etc) through the default servlet --> 
+<!-- 	<mvc:default-servlet-handler/>  -->
+	
+<!-- 		Handles HTTP GET requests for /resources/** by efficiently serving  -->
+<!-- 		up static resources in the ${webappRoot}/resources/ directory --> 
+<!-- 	<mvc:resources mapping="/resources/**" location="/resources/" /> -->
 	
 
 </beans>

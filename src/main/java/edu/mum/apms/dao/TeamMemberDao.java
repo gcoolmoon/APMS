@@ -8,7 +8,6 @@ public interface TeamMemberDao extends JpaRepository<TeamMember, Integer> {
 //	public TeamMember get(int memberId);
 //
 //	public List<TeamMember> getAll();
-//
 //	public void add(TeamMember member);
 //
 //	public void edit(TeamMember member);

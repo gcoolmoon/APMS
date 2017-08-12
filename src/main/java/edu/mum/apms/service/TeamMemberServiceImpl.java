@@ -19,25 +19,26 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	@Override
 	@Transactional
 	public TeamMember getTeamMemberById(int memberId) {
-		return teamDao.get(memberId);
+		return teamDao.findOne(memberId);
 	}
 
 	@Override
 	@Transactional
 	public List<TeamMember> getAllTeamMember() {
-		return teamDao.getAll();
+		return teamDao.findAll();
 	}
 
 	@Override
 	@Transactional
 	public void addTeamMember(TeamMember teamMember) {
-		teamDao.add(teamMember);
+		//teamDao.add(teamMember);
+	//	return null;
 	}
 
 	@Override
 	@Transactional
 	public void updateTeamMember(TeamMember teamMember) {
-		teamDao.edit(teamMember);
+		//teamDao.edit(teamMember);
 	}
 
 	@Override
