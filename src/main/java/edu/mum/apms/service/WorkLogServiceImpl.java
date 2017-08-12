@@ -25,20 +25,19 @@ public class WorkLogServiceImpl implements WorklogService {
 	@Override
 	@Transactional
 	public List<WorkLog> getAllWorklogByTask(int taskId) {
-		//return worklogDao.getAllByTask(taskId);
-		return null;
+		return worklogDao.findByTask(taskId);
 	}
 
 	@Override
 	@Transactional
 	public void addWorklog(WorkLog worklog) {
-		//worklogDao.add(worklog);
+		worklogDao.save(worklog);
 	}
 
 	@Override
 	@Transactional
 	public void updateWorklog(WorkLog worklog) {
-		//worklogDao.edit(worklog);
+		 worklogDao.save(worklog);
 	}
 
 	@Override
