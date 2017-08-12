@@ -30,7 +30,7 @@ public class Task {
 	@JoinColumn(name="backlogId")
 	private Backlog backlog;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="memberId")
 	private TeamMember teamMember;
 	

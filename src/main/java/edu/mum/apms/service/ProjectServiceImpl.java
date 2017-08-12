@@ -15,12 +15,12 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Transactional
 	public void add(Project project) {
-		projectDao.add(project);
+		projectDao.save(project);
 	}
 
 	@Transactional
 	public void edit(Project project) {
-		projectDao.edit(project);
+		projectDao.save(project);
 	}
 
 	@Transactional
@@ -30,12 +30,12 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Transactional
 	public Project get(int projectId) {
-		return projectDao.get(projectId);
+		return projectDao.findOne(projectId);
 	}
 
 	@Transactional
 	public List<Project> getAll() {
-		return projectDao.getAll();
+		return projectDao.findAll();
 	}
 
 }

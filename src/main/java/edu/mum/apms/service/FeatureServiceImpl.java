@@ -15,12 +15,12 @@ public class FeatureServiceImpl implements FeatureService {
 
 	@Transactional
 	public void add(Feature feature) {
-		featureDao.add(feature);
+		featureDao.save(feature);
 	}
 
 	@Transactional
 	public void edit(Feature feature) {
-		featureDao.edit(feature);
+		featureDao.save(feature);
 	}
 
 	@Transactional
@@ -30,12 +30,13 @@ public class FeatureServiceImpl implements FeatureService {
 
 	@Transactional
 	public Feature get(int featureId) {
-		return featureDao.get(featureId);
+		return featureDao.getOne(featureId);
 	}
 
 	@Transactional
 	public List<Feature> getAll(int projectId) {
-		return featureDao.getAll(projectId);
+		//return featureDao.findAll(projectId);
+		return null;
 	}
 
 }
