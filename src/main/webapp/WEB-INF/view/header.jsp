@@ -5,8 +5,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>APMS</title>
-	<link type="text/css" rel="stylesheet" href="../assets/bootstrap-3.0.3/css/bootstrap.min.css"/>
-	<link type="text/css" rel="stylesheet" href="../assets/css/main.css"/>
+	<link type="text/css" rel="stylesheet" href="/bootstrap-3.0.3/css/bootstrap.min.css"/>
+	<link type="text/css" rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
 	<div class="container-fluid">
