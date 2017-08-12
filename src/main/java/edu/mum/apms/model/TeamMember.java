@@ -1,9 +1,13 @@
 package edu.mum.apms.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,6 +17,9 @@ public class TeamMember {
 	@GeneratedValue
 	private int id;
 	private String position;
+	
+	@OneToMany
+	private List<Task> tasksAssigned ;
 	
 	@OneToOne
 	@JoinColumn(name="userId")
@@ -43,5 +50,16 @@ public class TeamMember {
 	public void setUser(User user) {
 		this.user = user;
 	}
+ 
+	//@OneToMany
+	public List<Task> getTasksAssigned() {
+		return tasksAssigned;
+	}
+
+	public void setTasksAssigned(List<Task> tasksAssigned) {
+		this.tasksAssigned = tasksAssigned;
+	}
+	
+	
 	
 }

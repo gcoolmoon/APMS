@@ -19,19 +19,22 @@ public class BacklogServiceImpl implements BacklogService{
 	@Override
 	@Transactional
 	public Backlog getBacklogById(int backlogId) {
-		return backlogDao.get(backlogId);
+		return backlogDao.findOne(backlogId);
 	}
 
 	@Override
 	@Transactional
 	public List<Backlog> getAllBacklogByProject(int projectId) {
-		return backlogDao.getAllByProject(projectId);
+		
+		return null;
+		//return backlogDao.geByProjecttAll(projectId);
 	}
 
 	@Override
 	@Transactional
 	public List<Backlog> getAllActiveBacklogByProject(int projectId) {
-		return backlogDao.getAllActiveByProject(projectId);
+		return null;
+		//return backlogDao.getAllActiveByProject(projectId);
 	}
 
 	@Override

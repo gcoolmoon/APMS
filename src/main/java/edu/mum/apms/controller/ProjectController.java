@@ -8,8 +8,8 @@ import edu.mum.apms.service.ProjectService;
 @Controller
 public class ProjectController {
 
-	@Autowired
-	private ProjectService projectService;
+//	@Autowired
+//	private ProjectService projectService;
 	
 	@RequestMapping("/index")
 	public String setUpForm() {
