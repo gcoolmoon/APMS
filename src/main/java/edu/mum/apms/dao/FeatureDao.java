@@ -8,5 +8,5 @@ public interface FeatureDao {
 	public void edit(Feature feature);
 	public void delete(int featureId);
 	public Feature get(int featureId);
-	public List<Feature> getAll();
+	public List<Feature> getAll(int projectId);
 }

@@ -29,9 +29,9 @@
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost/cs544"/>
+		<property name="url" value="jdbc:mysql://localhost/apmsdb"/>
         <property name="username"  value="root"/>
-        <property name="password" value="root"/>   
+        <property name="password" value=""/>   
 	</bean>
 	
 	<bean id="hibernateProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -47,8 +47,12 @@
 	 		</props>
 	 	</property>
 	</bean>
-	
-	
+	<bean id="projectDao" class="edu.mum.apms.dao.ProjectDaoImpl">
+		<property name="session" ref="sessionFactory"></property>
+	</bean>
+	<bean id="featureDao" class="edu.mum.apms.dao.FeatureDaoImpl">
+		<property name="session" ref="sessionFactory"></property>
+	</bean>
         
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
     	<property name="dataSource" ref="dataSource"/>

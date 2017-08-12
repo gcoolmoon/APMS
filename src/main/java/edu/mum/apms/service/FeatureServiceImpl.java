@@ -34,8 +34,8 @@ public class FeatureServiceImpl implements FeatureService {
 	}
 
 	@Transactional
-	public List<Feature> getAll() {
-		return featureDao.getAll();
+	public List<Feature> getAll(int projectId) {
+		return featureDao.getAll(projectId);
 	}
 
 }

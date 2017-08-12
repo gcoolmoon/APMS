@@ -1,0 +1,47 @@
+.search-form{
+	width: 300px
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  height: 100%;
+}
+nav, .search-form input, .search-form button {
+	border-radius: 0 !important;
+}
+.navbar, .search-form input, .search-form button{
+  border: none;	
+}
+.mainmenu-area nav>div{
+    background-color: #1abc9c;
+}
+.navbar-default .navbar-nav>li>a:hover, .search-form button i{
+	color: #1abc9c;
+}
+.mainmenu-area nav a{
+	color: #ffffff !important;
+}
+.side-bar, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+    background: #222;
+}
+.logo a{
+	font-size: 24px;
+}
+.mainmenu-area {
+	font-size: 12px;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.side-bar {
+  height:calc(100vh - 0px);
+}
+.navbar-default .navbar-nav>li>a {
+    color: #aaa;
+}
+.search-form input{
+	height: 32px;
+    box-shadow: none;
+}
