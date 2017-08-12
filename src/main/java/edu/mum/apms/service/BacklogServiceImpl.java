@@ -40,13 +40,13 @@ public class BacklogServiceImpl implements BacklogService{
 	@Override
 	@Transactional
 	public void addBacklog(Backlog backlog) {
-		backlogDao.add(backlog);
+		backlogDao.save(backlog);
 	}
 
 	@Override
 	@Transactional
 	public void updateBacklog(Backlog backlog) {
-		backlogDao.edit(backlog);		
+		backlogDao.save(backlog);		
 	}
 
 	@Override
