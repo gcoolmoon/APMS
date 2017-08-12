@@ -34,14 +34,14 @@
 			  </div>
 			</nav>
 	    </div> <!-- End mainmenu area -->
-	    <div class="container-fluid">
+	    <div class="container-fluid content">
 		  <div class="row">
 		    <div class="col-sm-3 col-lg-2">
 		      <nav class="navbar navbar-default navbar-fixed-side side-bar">
 		        <div class="container-fluid">
 				    <div class="collapse navbar-collapse" id="myNavbar">
 				      <ul class="nav navbar-nav navbar-left">
-				        <li><a href="#">Projects</a></li>
+				        <li class="active"><a href="#">Projects</a></li>
 				        <li><a href="#">Agile Board</a></li>
 				        <li><a href="#">Releases</a></li>
 				        <li><a href="#">All Issues</a></li>

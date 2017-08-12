@@ -12,9 +12,13 @@ public class Feature {
 	private String description;
 	private String priority;
 	@ManyToOne
+	@JoinColumn(name="projectId", nullable=false)
 	private Project project;
 	@Enumerated(EnumType.STRING)
 	private Status status;
+	@OneToOne
+	@JoinColumn(name="id")
+	private Backlog backlog;
 	
 	public Feature() {}
 	

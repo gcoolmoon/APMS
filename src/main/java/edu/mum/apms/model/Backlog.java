@@ -29,7 +29,7 @@ public class Backlog {
 	
 	@OneToMany(mappedBy="backlog")	
 	private List<Task> taskList;
-	
+		
 	public Backlog(){}
 	
 	public int getId() {

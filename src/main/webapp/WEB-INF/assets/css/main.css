@@ -17,7 +17,7 @@ nav, .search-form input, .search-form button {
 .mainmenu-area nav>div{
     background-color: #1abc9c;
 }
-.navbar-default .navbar-nav>li>a:hover, .search-form button i{
+.navbar-default .navbar-nav>li>a:hover, .search-form button i,.nav-tabs>li>a{
 	color: #1abc9c;
 }
 .mainmenu-area nav a{
@@ -44,4 +44,19 @@ nav, .search-form input, .search-form button {
 .search-form input{
 	height: 32px;
     box-shadow: none;
+}
+.content>.row{
+    margin-right: 0;
+}
+.content>.row>div:last-child{
+	padding: 20px;
+}
+.no-margin{
+	margin: 0;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .nav-tabs{
+	border-color: #222;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+	border-bottom-color: transparent;
 }
