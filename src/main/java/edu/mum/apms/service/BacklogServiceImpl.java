@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.BacklogDao;
 import edu.mum.apms.dao.FeatureDao;
+import edu.mum.apms.dao.ProjectDao;
 import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Feature;
 
@@ -22,6 +23,9 @@ public class BacklogServiceImpl implements BacklogService{
 	@Autowired
 	private FeatureDao featureDao;
 	
+	@Autowired
+	private ProjectDao projectDao;
+	
 	@Override
 	@Transactional
 	public Backlog getBacklogById(int backlogId) {
@@ -32,8 +36,9 @@ public class BacklogServiceImpl implements BacklogService{
 	@Transactional
 	public List<Backlog> getAllBacklogByProject(int projectId) {
 		
-		List<Feature> featureList= featureDao.findByProject(projectId);
+		List<Feature> featureList= featureDao.findByProject(projectDao.getOne(projectId));
 		List<Backlog> backlogList = new ArrayList<Backlog>();
+		
 		for(Feature feature: featureList){
 			backlogList.addAll(backlogDao.findByFeature(feature));
 		}
