@@ -15,7 +15,7 @@ public class TaskServiceImpl implements TaskService {
 
 	@Autowired
 	private TaskDao taskDao;
-
+	
 	@Override
 	@Transactional
 	public Task getTaskById(int taskId) {
@@ -24,9 +24,8 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	@Transactional
-	public List<Task> getAllTaskByBacklog(int backlogId) {
-		//return taskDao.getAllActiveByBacklog(backlogId);
-		return null;
+	public List<Task> getAllTaskByBacklog(int backlogId) {		
+		return taskDao.findByBacklog(backlogId);		
 	}
 
 	@Override
@@ -39,13 +38,13 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	@Transactional
 	public void addTask(Task task) {
-		//taskDao.add(task);
+		taskDao.save(task);
 	}
 
 	@Override
 	@Transactional
 	public void updateTask(Task task) {
-		//taskDao.edit(task);
+		taskDao.save(task);
 	}
 
 	@Override

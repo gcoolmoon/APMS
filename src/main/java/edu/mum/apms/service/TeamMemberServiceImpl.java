@@ -31,14 +31,13 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	@Override
 	@Transactional
 	public void addTeamMember(TeamMember teamMember) {
-		//teamDao.add(teamMember);
-	//	return null;
+		teamDao.save(teamMember);	
 	}
 
 	@Override
 	@Transactional
 	public void updateTeamMember(TeamMember teamMember) {
-		//teamDao.edit(teamMember);
+		teamDao.save(teamMember);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package edu.mum.apms.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -8,13 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.BacklogDao;
+import edu.mum.apms.dao.FeatureDao;
 import edu.mum.apms.model.Backlog;
+import edu.mum.apms.model.Feature;
 
 @Service
 public class BacklogServiceImpl implements BacklogService{
 
 	@Autowired
 	private BacklogDao backlogDao;
+	
+	@Autowired
+	private FeatureDao featureDao;
 	
 	@Override
 	@Transactional
@@ -26,8 +32,13 @@ public class BacklogServiceImpl implements BacklogService{
 	@Transactional
 	public List<Backlog> getAllBacklogByProject(int projectId) {
 		
-		return null;
-		//return backlogDao.geByProjecttAll(projectId);
+		List<Feature> featureList= featureDao.findByProject(projectId);
+		List<Backlog> backlogList = new ArrayList<Backlog>();
+		for(Feature feature: featureList){
+			backlogList.addAll(backlogDao.findByFeature(feature));
+		}
+		 
+		return backlogList;		
 	}
 
 	@Override
@@ -40,13 +51,13 @@ public class BacklogServiceImpl implements BacklogService{
 	@Override
 	@Transactional
 	public void addBacklog(Backlog backlog) {
-		backlogDao.add(backlog);
+		backlogDao.save(backlog);
 	}
 
 	@Override
 	@Transactional
 	public void updateBacklog(Backlog backlog) {
-		backlogDao.edit(backlog);		
+		backlogDao.save(backlog);		
 	}
 
 	@Override
