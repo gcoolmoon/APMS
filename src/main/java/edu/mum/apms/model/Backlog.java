@@ -19,54 +19,66 @@ public class Backlog {
 	private int id;
 	private double hourEstimated;
 	private double hourSpent;
-	
+
 	@OneToOne
-	@JoinColumn(name="featureId")
+	@JoinColumn(name = "featureId")
 	private Feature feature;
-	
-	@Enumerated(EnumType.STRING)	
+
+	@Enumerated(EnumType.STRING)
 	private Status status;
-	
-	@OneToMany(mappedBy="backlog")	
+
+	@OneToMany(mappedBy = "backlog")
 	private List<Task> taskList;
-		
-	public Backlog(){}
-	
+
+	public Backlog() {
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public double getHourEstimated() {
 		return hourEstimated;
 	}
+
 	public void setHourEstimated(double hourEstimated) {
 		this.hourEstimated = hourEstimated;
 	}
+
 	public double getHourSpent() {
 		return hourSpent;
 	}
+
 	public void setHourSpent(double hourSpent) {
 		this.hourSpent = hourSpent;
 	}
+
 	public Feature getFeature() {
 		return feature;
 	}
+
 	public void setFeature(Feature feature) {
 		this.feature = feature;
 	}
+
 	public Status getStatus() {
 		return status;
 	}
+
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
 	public List<Task> getTaskList() {
 		return taskList;
 	}
+
 	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
 	}
-	
+
 }

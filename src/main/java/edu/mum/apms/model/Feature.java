@@ -16,8 +16,8 @@ public class Feature {
 	private Project project;
 	@Enumerated(EnumType.STRING)
 	private Status status;
-	@OneToOne
-	@JoinColumn(name="id")
+	
+	@OneToOne(mappedBy="feature")	
 	private Backlog backlog;
 	
 	public Feature() {}
@@ -77,6 +77,14 @@ public class Feature {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Backlog getBacklog() {
+		return backlog;
+	}
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
 	}
 	
 	
