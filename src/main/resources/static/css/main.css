@@ -8,19 +8,19 @@ html {
 body {
   height: 100%;
 }
-nav, .search-form input, .search-form button {
+nav, .search-form input, .search-form button, .green-btn {
 	border-radius: 0 !important;
 }
-.navbar, .search-form input, .search-form button{
+.navbar, .search-form input, .search-form button, .green-btn{
   border: none;	
 }
-.mainmenu-area nav>div{
+.mainmenu-area nav>div, .green-btn{
     background-color: #1abc9c;
 }
-.navbar-default .navbar-nav>li>a:hover, .search-form button i,.nav-tabs>li>a{
+.navbar-default .navbar-nav>li>a:hover, .search-form button i,.nav-tabs>li>a, .green-txt{
 	color: #1abc9c;
 }
-.mainmenu-area nav a{
+.mainmenu-area nav a, .white-txt, .green-btn{
 	color: #ffffff !important;
 }
 .side-bar, .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
@@ -33,13 +33,19 @@ nav, .search-form input, .search-form button {
 	font-size: 12px;
 }
 .navbar {
-  margin-bottom: 0;
+  	margin-bottom: 0;
+}
+.main-title,.main-nav{
+	border-bottom: 1px solid #1abc9c;
 }
 .side-bar {
-  height:calc(100vh - 0px);
+  	height:calc(100vh - 50px);
 }
 .navbar-default .navbar-nav>li>a {
     color: #aaa;
+}
+.grey-txt{
+	color: #ccc;
 }
 .search-form input{
 	height: 32px;
@@ -54,9 +60,36 @@ nav, .search-form input, .search-form button {
 .no-margin{
 	margin: 0;
 }
+.space-sm{
+	margin-top: 20px;
+}
+.space-lg{
+	margin-top: 50px;
+}
+.space-sm-bottom{
+	margin-bottom: 20px;
+}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus, .nav-tabs{
 	border-color: #222;
 }
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
 	border-bottom-color: transparent;
 }
+.search-form .btn{
+    padding: 9px 12px;
+}
+.projects>div>div{
+    background-color: #222;
+    min-height: 250px;
+    padding: 10px;
+}
+.manage-projects table{	
+    min-width: 80%;
+}
+
+
+
+
+
+
+

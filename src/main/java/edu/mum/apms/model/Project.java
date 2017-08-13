@@ -13,6 +13,7 @@ public class Project {
 	private String name;
 	private String description;
 	@Temporal(TemporalType.DATE)
+	@OrderBy
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
