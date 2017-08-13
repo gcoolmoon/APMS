@@ -12,9 +12,16 @@ public class ProjectController {
 //	private ProjectService projectService;
 	
 	@RequestMapping("/projects")
-	public String setUpForm() {
-
+	public String viewProjects() {
 		return "/projects";
+	}
+	@RequestMapping("/projects/manage")
+	public String manageProjects() {
+		return "/manageProjects";
+	}
+	@RequestMapping("/projects/new")
+	public String newProject() {
+		return "/newProject";
 	}
 
 }
