@@ -1,5 +1,8 @@
-<%@ include file = "header.jsp" %>
+<%@ include file = "../header.jsp" %>
 <div class="row no-margin">		
+	<div class="alert alert-success" id="addAlert">
+	  <strong>Success!</strong> <span id="addMsg">${message}</span>
+	</div>
 	<div class="row">
 		<h2 class="main-title">Projects</h2>
 	</div>	
@@ -20,4 +23,4 @@
 		</div>
 	</div>	
 </div>
-<%@ include file = "footer.jsp" %>
+<%@ include file = "../footer.jsp" %>
