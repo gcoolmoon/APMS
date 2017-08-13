@@ -71,4 +71,19 @@ public class BacklogServiceImpl implements BacklogService{
 		backlogDao.delete(backlogId);		
 	}
 
+	@Override
+	public List<Feature> getAddableFeatures(int projectId) {
+		// TODO Auto-generated method stub
+		
+		List<Feature> features = featureDao.findByProject(projectDao.findOne(projectId));
+		List<Feature> featureList = new ArrayList<Feature>();
+		
+		for(Feature feature: features){
+			if(feature.getBacklog()==null){
+				featureList.add(feature);
+			}
+		}
+		return featureList;
+	}
+
 }
