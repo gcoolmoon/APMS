@@ -2,6 +2,8 @@ package edu.mum.apms.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table (name = "feature")
 public class Feature {
@@ -13,11 +15,13 @@ public class Feature {
 	private String priority;
 	@ManyToOne
 	@JoinColumn(name="projectId", nullable=false)
+	@JsonBackReference
 	private Project project;
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	@OneToOne(mappedBy="feature")	
+	@OneToOne(mappedBy="feature")
+	@JsonBackReference
 	private Backlog backlog;
 	
 	public Feature() {}

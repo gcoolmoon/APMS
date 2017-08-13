@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 
 <div class="row">
 
@@ -23,9 +23,12 @@
 						<!--  <h3>Backlog Items</h3>-->
 
 						<!-- <div class="addNew" data-toggle="modal" data-target="#addBacklog"> -->
-						<div class="addNew">
-							<a href="/addBacklog/${projectId}" class="btn btn-default-btn-xs btn-success"><i
-								class="glyphicon glyphicon-plus"></i>New</a>
+						<%-- <div id="addNewBacklog" class="addNewBacklog" name="${projectId}"> --%>
+						<div>
+							<a <%-- href="/addBacklog/${projectId}" --%>
+								href="#addBacklog" data-toggle="modal"
+								class="btn btn-default-btn-xs btn-success addNewBacklog" data-projectId = "${projectId}"><i
+								class="glyphicon glyphicon-plus" ></i>New</a>
 						</div>
 						<!-- Backlog -Box -Start-->
 						<c:forEach var="backlog" items="${backlogs}">
@@ -54,7 +57,12 @@
 											</span>
 										</ul>
 										<p>
-											<a data-toggle="modal" href="#updateBacklog">Update</a>
+											<a data-toggle="modal" href="#updateBacklog"
+												class="updBacklog" name="${backlog.id}"
+												data-featureid="${backlog.feature.featureId}"
+												data-featuretitle="${backlog.feature.title}"
+												data-featuredesc="${backlog.feature.description}"
+												data-featureprio="${backlog.feature.priority}">Update</a>
 										</p>
 									</div>
 								</div>
@@ -67,6 +75,7 @@
 
 						<!-- Backlog -Box -Start-->
 						<c:forEach var="backlog" items="${backlogs}">
+
 							<c:if test="${backlog.status == 'IN_PROGRESS'}">
 								<div class="col-md-4">
 									<div class="well">
@@ -91,19 +100,25 @@
 											</span>
 										</ul>
 										<p>
-											<a data-toggle="modal" href="#updateBacklog">Update</a>
+											<a data-toggle="modal" href="#updateBacklog"
+												class="updBacklog" name="${backlog.id}"
+												data-featureid="${backlog.feature.featureId}"
+												data-featuretitle="${backlog.feature.title}"
+												data-featuredesc="${backlog.feature.description}"
+												data-featureprio="${backlog.feature.priority}">Update</a>
 										</p>
 									</div>
 								</div>
 							</c:if>
+							<!-- Backlog-Box-End -->
 						</c:forEach>
-						<!-- Backlog -Box -End-->
 
 					</div>
 					<div class="tab-pane fade" id="tab3default">
 
 						<!-- Backlog -Box -Start-->
 						<c:forEach var="backlog" items="${backlogs}">
+
 							<c:if test="${backlog.status == 'COMPLETED'}">
 								<div class="col-md-4">
 									<div class="well">
@@ -128,13 +143,18 @@
 											</span>
 										</ul>
 										<p>
-											<a data-toggle="modal" href="#updateBacklog">Update</a>
+											<a data-toggle="modal" href="#updateBacklog"
+												class="updBacklog" name="${backlog.id}"
+												data-featureid="${backlog.feature.featureId}"
+												data-featuretitle="${backlog.feature.title}"
+												data-featuredesc="${backlog.feature.description}"
+												data-featureprio="${backlog.feature.priority}">Update</a>
 										</p>
 									</div>
 								</div>
 							</c:if>
+							<!-- Backlog-Box-End -->
 						</c:forEach>
-						<!-- Backlog -Box -End-->
 
 					</div>
 				</div>
@@ -147,7 +167,7 @@
 
 	<!-- Add Backlog Section -Start-->
 	<div class="row">
-		<form class="form-horizontal" method="post">
+		<form class="form-horizontal" id="addBacklogForm" method="post">
 			<div class="modal fade" id="addBacklog" role="dialog">
 				<div class="modal-dialog">
 
@@ -165,18 +185,14 @@
 										class="control-label col-md-2  requiredField">Title<span
 										class="asteriskField">*</span>
 									</label>
-									<div class="controls col-md-8 ">
+									<div class="controls col-md-8" id="featureListDiv">
 
-										<select class="form-control" id="backlogTitle">
-											<option>Feature1</option>
-											<option>Feature2</option>
-											<option>Feature3</option>
-											<option>Feature4</option>
+										<select class="form-control" id="backlogTitOption">											
 										</select>
 
 									</div>
 								</div>
-								<div class="form-group required">
+								<!-- <div class="form-group required">
 									<label for="description"
 										class="control-label col-md-2  requiredField">Description<span
 										class="asteriskField">*</span>
@@ -187,7 +203,7 @@
 											placeholder="Add Description" style="margin-bottom: 10px"
 											type="text" />
 									</div>
-								</div>
+								</div> -->
 								<div class="form-group required">
 									<label for="hourEstimated"
 										class="control-label col-md-2  requiredField">Hour
@@ -200,7 +216,7 @@
 											type="text" />
 									</div>
 								</div>
-								<div class="form-group required">
+								<!-- <div class="form-group required">
 									<label for="priority"
 										class="control-label col-md-2  requiredField">Priority<span
 										class="asteriskField">*</span>
@@ -212,13 +228,13 @@
 											<option>Low</option>
 										</select>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-success">Save</button>
+							<button type="submit" class="btn btn-success">Save</button>
 						</div>
 					</div>
 				</div>
@@ -235,35 +251,44 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">BacklogItem 1</h4>
+					<h4 id="featureTitle" class="modal-title">BacklogItem
+						${projectId}</h4>
 				</div>
-				<div class="modal-body">
-					<p>Backlog Description</p>
-					<hr />
 
-					<div class="row">
-						<div class="col-md-4">
-							<p>Hour Estimated : 8H</p>
-						</div>
-						<div class="col-md-4">
-							<p>Priority : High</p>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="selStatus">Status:</label> <select
-									class="form-control" id="selStatus">
-									<option>OPEN</option>
-									<option>IN_PROGRESS</option>
-									<option>COMPLETED</option>
-								</select>
+				<form id="updBacklogForm" action="/updateBacklog/" method="post">
+					<div class="modal-body">
+						<p id="featureDescription">Backlog Description</p>
+						<hr />
+						<input id="featureIdVal" type="hidden" name="featureId" value="" />
+						<div class="row">
+							
+							<div class="col-md-4">
+								<p id="blPriority"></p>
 							</div>
+							
+							<div class="col-md-4">
+								<label for="estimatedHour">Estimated Hour : </label> <input
+									type="text" id="estimatedHour" name="hourEstimated" value="" />
+							</div>
+
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="selStatus">Status:</label> <select
+										class="form-control" id="selStatus" name="status">
+										<option value="OPEN">OPEN</option>
+										<option value="IN_PROGRESS">IN_PROGRESS</option>
+										<option value="COMPLETED">COMPLETED</option>
+									</select>
+								</div>
+							</div>
+
 						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-success">Save</button>
-				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-success">Save</button>
+					</div>
+				</form>
 			</div>
 
 		</div>
@@ -273,4 +298,4 @@
 </div>
 
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
