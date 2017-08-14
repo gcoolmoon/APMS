@@ -90,7 +90,9 @@ nav, .search-form input, .search-form button, .green-btn {
     min-width: 80%;
 }
 
-
+.boardTitle{
+	text-align:center;
+}
 
 
 

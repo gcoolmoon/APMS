@@ -97,7 +97,6 @@ public class BacklogController {
 	}
 
 	// Delete Backlog
-
 	@RequestMapping(value = "/deleteBacklog/{backlogId}", method = RequestMethod.POST)
 	public String deleteBacklog(HttpServletRequest request, @PathVariable int backlogId) {
 
@@ -105,4 +104,5 @@ public class BacklogController {
 
 		return "redirect:/Backlog/" + request.getSession().getAttribute("projectId");
 	}
+
 }

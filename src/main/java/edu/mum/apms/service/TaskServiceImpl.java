@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.TaskDao;
+import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Task;
 
 @Service
@@ -24,8 +25,8 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	@Transactional
-	public List<Task> getAllTaskByBacklog(int backlogId) {		
-		return taskDao.findByBacklog(backlogId);		
+	public List<Task> getAllTaskByBacklog(Backlog backlog) {		
+		return taskDao.findByBacklog(backlog);		
 	}
 
 	@Override
