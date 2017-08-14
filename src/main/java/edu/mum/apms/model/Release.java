@@ -16,6 +16,7 @@ public class Release {
 	
 	@Id @GeneratedValue
 	private int releaseId;
+	
 	private String version;
 	private String description;
 	
@@ -25,6 +26,14 @@ public class Release {
 	@OneToMany(mappedBy="release")
 	private List<Sprint> sprint = new ArrayList<>();
 	
+	
+	
+	public int getReleaseId() {
+		return releaseId;
+	}
+	public void setReleaseId(int releaseId) {
+		this.releaseId = releaseId;
+	}
 	public String getVersion() {
 		return version;
 	}
