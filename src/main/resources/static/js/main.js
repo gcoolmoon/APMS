@@ -6,7 +6,44 @@ $(document).ready(function() {
 			e.preventDefault();
 		}
 	});
-	
+	$('.showFeatures').click(function(){
+		let projectId = $(this).attr("data-pid");	
+		let data = 'projectId=' + encodeURIComponent(projectId);
+
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/getFeatures",
+			data : data,
+			dataType : 'json',
+
+			success : function(features) {
+				$('.features-list').empty();
+				$.each(features, function(index, Feature ) {	
+					let list = $('<li>');	
+					let div = $('<div>');
+					let h4 = $('<h4>', {
+						text	:	Feature.title,
+						class : 'clearfix grey-txt'
+							});
+					let small = $('<small>', {text: Feature.status, class: 'pull-right'});
+					let pDesc = $('<p>');
+					let spanDesc = $('<span>', {text: 'Description: ',class: 'grey-txt'});
+					let pPriority = $('<p>');
+					let spanPriority = $('<span>', {text: 'Priority: ',class: 'grey-txt'});
+					pPriority.append(spanPriority).append(Feature.priority);
+					pDesc.append(spanDesc).append(Feature.description);
+					h4.append(small);
+					div.append(h4).append(pDesc).append(pPriority);
+					list.append(div);
+					$('.features-list').append(list);
+				});				
+			},
+			error : function() {
+				alert("failure");
+			}
+		});
+	});	
 
 			// Add Backlog
 			$(".addNewBacklog").on('click', function() {

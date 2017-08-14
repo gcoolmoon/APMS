@@ -35,7 +35,7 @@ nav, .search-form input, .search-form button, .green-btn {
 .navbar {
   	margin-bottom: 0;
 }
-.main-title,.main-nav{
+.main-title,.main-nav,#viewFeaturesModal li{
 	border-bottom: 1px solid #1abc9c;
 }
 .side-bar {
@@ -89,10 +89,22 @@ nav, .search-form input, .search-form button, .green-btn {
 .manage-projects table{	
     min-width: 80%;
 }
-
-
-
-
+#viewFeaturesModal .modal-header {
+    padding: 0 15px;
+}
+#viewFeaturesModal .modal-body {
+    padding: 0 20px;
+}
+#viewFeaturesModal .modal-content{
+    color: #fff;
+    background-color: #222;
+}
+#viewFeaturesModal .modal-dialog{
+	background: none;
+}
+#viewFeaturesModal li p{
+	margin-bottom: 2px;
+}
 
 
 
