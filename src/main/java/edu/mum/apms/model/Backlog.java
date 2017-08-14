@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Backlog {
 
@@ -22,12 +24,14 @@ public class Backlog {
 
 	@OneToOne
 	@JoinColumn(name = "featureId")
+	@JsonBackReference
 	private Feature feature;
 
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
 	@OneToMany(mappedBy = "backlog")
+	@JsonBackReference
 	private List<Task> taskList;
 
 	public Backlog() {
