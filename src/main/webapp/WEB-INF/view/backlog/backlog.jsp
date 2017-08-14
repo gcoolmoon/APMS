@@ -20,15 +20,9 @@
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="tab1default">
 						<input type="hidden" value="${projectId}" id="project_id" />
-						<!--  <h3>Backlog Items</h3>-->
 
-						<!-- <div class="addNew" data-toggle="modal" data-target="#addBacklog"> -->
-						<%-- <div id="addNewBacklog" class="addNewBacklog" name="${projectId}"> --%>
 						<div>
-							<a
-								<%-- href="/addBacklog/${projectId}" --%>
-								href="#addBacklog"
-								data-toggle="modal"
+							<a href="#addBacklog" data-toggle="modal"
 								class="btn btn-default-btn-xs btn-success addNewBacklog"
 								data-projectId="${projectId}"><i
 								class="glyphicon glyphicon-plus"></i>New</a>
@@ -58,6 +52,7 @@
 												title="Status"> <i
 												class="glyphicon glyphicon-eye-open"></i>${backlog.status}
 											</span>
+
 										</ul>
 										<p>
 											<a data-toggle="modal" href="#updateBacklog"
@@ -70,7 +65,11 @@
 											<span data-toggle="tooltip" data-placement="top"
 												title="delete"> <a data-toggle="modal"
 												class="delBacklog" name="${backlog.id}"
-												href="#deleteBacklog"> Delete</a></span>
+												href="#deleteBacklog"> Delete | </a></span> <a
+												href="/WorkLog/${backlog.id}"><span
+												data-toggle="tooltip" data-placement="top" title="Worklog">
+													<i class="glyphicon glyphicon-eye-open"></i> View WorkLog
+											</span> </a>
 										</p>
 
 									</div>
@@ -119,7 +118,11 @@
 											<span data-toggle="tooltip" data-placement="top"
 												title="delete"> <a data-toggle="modal"
 												class="delBacklog" name="${backlog.id}"
-												href="#deleteBacklog"> Delete</a></span>
+												href="#deleteBacklog"> Delete | </a></span> <a
+												href="/WorkLog/${backlog.id}"><span
+												data-toggle="tooltip" data-placement="top" title="Worklog">
+													<i class="glyphicon glyphicon-eye-open"></i> View WorkLog
+											</span> </a>
 										</p>
 									</div>
 								</div>
@@ -167,7 +170,11 @@
 											<span data-toggle="tooltip" data-placement="top"
 												title="delete"> <a data-toggle="modal"
 												class="delBacklog" name="${backlog.id}"
-												href="#deleteBacklog"> Delete</a></span>
+												href="#deleteBacklog"> Delete | </a></span> <a
+												href="/WorkLog/${backlog.id}"><span
+												data-toggle="tooltip" data-placement="top" title="Worklog">
+													<i class="glyphicon glyphicon-eye-open"></i> View WorkLog
+											</span> </a>
 										</p>
 									</div>
 								</div>
@@ -211,18 +218,7 @@
 
 									</div>
 								</div>
-								<!-- <div class="form-group required">
-									<label for="description"
-										class="control-label col-md-2  requiredField">Description<span
-										class="asteriskField">*</span>
-									</label>
-									<div class="controls col-md-8 ">
-										<input class="input-md  textinput textInput form-control"
-											id="description" maxlength="30" name="description"
-											placeholder="Add Description" style="margin-bottom: 10px"
-											type="text" />
-									</div>
-								</div> -->
+
 								<div class="form-group required">
 									<label for="hourEstimated"
 										class="control-label col-md-2  requiredField">Hour
@@ -235,19 +231,7 @@
 											type="text" />
 									</div>
 								</div>
-								<!-- <div class="form-group required">
-									<label for="priority"
-										class="control-label col-md-2  requiredField">Priority<span
-										class="asteriskField">*</span>
-									</label>
-									<div class="controls col-md-8 ">
-										<select class="form-control" id="priority">
-											<option>High</option>
-											<option>Medium</option>
-											<option>Low</option>
-										</select>
-									</div>
-								</div> -->
+
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -308,7 +292,7 @@
 						<button type="submit" class="btn btn-success">Save</button>
 					</div>
 				</form>
-			</div>
+			</div> <!-- model content  -->
 
 		</div>
 	</div>

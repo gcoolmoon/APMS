@@ -55,7 +55,7 @@ public class TaskController {
 	// Ajax call, to fill the update form data
 	@RequestMapping(value = "/updateTask", method = RequestMethod.GET)
 	@ResponseBody
-	public Task TaskDetail(@RequestParam(value = "taskId") int taskId) {
+	public Task taskDetail(@RequestParam(value = "taskId") int taskId) {
 
 		return taskService.getTaskById(taskId);
 	}
