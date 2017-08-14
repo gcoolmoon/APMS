@@ -47,6 +47,9 @@ nav, .search-form input, .search-form button, .green-btn {
 .grey-txt{
 	color: #ccc;
 }
+.upper{
+	text-transform: uppercase;
+}
 .search-form input{
 	height: 32px;
     box-shadow: none;

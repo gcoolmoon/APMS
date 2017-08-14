@@ -1,4 +1,12 @@
 $(document).ready(function() {
+	
+	$('#deleteProject').click(function(e){
+		let answer = confirm("Are you sure you want to remove this project?");
+		if (!answer){
+			e.preventDefault();
+		}
+	});
+	
 
 			// Add Backlog
 			$(".addNewBacklog").on('click', function() {
@@ -35,13 +43,12 @@ $(document).ready(function() {
 						alert("failure");
 					}
 				});
+			});
 				
 			
 				$("#backlogTitOption").change(function() {
 					$('#addBacklogForm').attr('action','/addBacklog/'+ $(this).find('option:selected').val());
 				});
-				
-			});	
 						
 	
 			// Open Update Backlog toggle with list of features
@@ -63,7 +70,7 @@ $(document).ready(function() {
 				var data = 'backlogId=' + encodeURIComponent(backlogId);
 
 				if (!data)
-					return e.preventDefault() // stops modal from being shown
+					return e.preventDefault(); // stops modal from being shown
 
 				$.ajax({
 
@@ -100,4 +107,10 @@ $(document).ready(function() {
 	setTimeout(() => {
 		$('#addAlert').hide();
 	}, 3000);
+	
+	$('.addFeature').click(function(e){
+		let pid = $(this).attr('data-pid');
+		$('#addFeatureSubmit').val(pid);
+	});
+	
 });

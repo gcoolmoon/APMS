@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Project;
+import edu.mum.apms.model.Status;
 import edu.mum.apms.model.Feature;
+import edu.mum.apms.service.FeatureService;
 import edu.mum.apms.service.ProjectService;
 
 @Controller
@@ -27,6 +29,9 @@ public class ProjectController {
 
 	@Autowired
 	private ProjectService projectService;
+
+	@Autowired
+	private FeatureService featureService;
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -37,13 +42,14 @@ public class ProjectController {
 	
 	@RequestMapping("/projects")
 	public String viewProjects(HttpServletRequest request, Model model) {
-		//if (request.getAttribute("message"))
-			model.addAttribute("message", request.getAttribute("message"));
+		model.addAttribute("message", request.getAttribute("message"));
+		model.addAttribute("projects", projectService.getAll());
 		return "/projects/projects";
 	}
 	@RequestMapping(value = "/projects/manage", method = RequestMethod.GET)
-	public String manageProjects(HttpServletRequest request, Model model) {
+	public String manageProjects(Model model) {
 		model.addAttribute("projects", projectService.getAll());
+		model.addAttribute("feature", new Feature());
 		return "/projects/manage";
 	}
 	@RequestMapping(value = "/projects/new", method = RequestMethod.GET)
@@ -53,15 +59,25 @@ public class ProjectController {
 	}
 	@RequestMapping(value = "/projects/new", method = RequestMethod.POST)
 	public String addNewProject(HttpServletRequest request, @ModelAttribute("project") Project project) {
-		System.out.println(project.getName());
-		System.out.println(project.getDescription());
-		System.out.println(project.getStartDate());
-		System.out.println(project.getEndDate());
 		project.setFeatures(new ArrayList<Feature>());
 		projectService.add(project);
 		request.setAttribute("message", "New project is successfully added!");
 		return "forward:/projects";
-		//return "redirect:/projects" +request.getSession().getAttribute("userId");
+	}
+	@RequestMapping(value = "/projects/delete/{id}", method = RequestMethod.GET)
+	public String deleteProject(HttpServletRequest request, @PathVariable int id) {
+		projectService.delete(id);
+		return "redirect:/projects/manage";
+	}
+	@RequestMapping(value = "/projects/addFeature", method = RequestMethod.POST)
+	public String addFeatureForProject(HttpServletRequest request, @ModelAttribute("feature") Feature feature) {
+		Project current = projectService.get(Integer.parseInt(request.getParameter("pid")));
+		feature.setStatus(Status.OPEN);
+		feature.setProject(current);
+		featureService.add(feature);
+		current.getFeatures().add(feature);
+		projectService.edit(current);
+		return "redirect:/projects/manage";
 	}
 
 }
