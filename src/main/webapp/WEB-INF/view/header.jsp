@@ -11,10 +11,11 @@
 	<link type="text/css" rel="stylesheet" href="/easypiechart/_styles/easypiechart.css"/>
 	<link type="text/css" rel="stylesheet" href="/css/main.css"/>
 	
-	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/easypiechart/_scripts/easypiechart.js"></script>
-	<link type="text/css" rel="stylesheet" href="/bootstrap-3.0.3/js/bootstrap.min.js"/>
-	<script src="/js/main.js"></script>	
+	<script type="text/javascript" src="/bootstrap-3.0.3/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>	
+
 </head>
 
 <body>
