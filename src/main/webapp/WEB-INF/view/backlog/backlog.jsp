@@ -4,7 +4,6 @@
 
 <div class="row">
 
-
 	<!-- NavBar -->
 	<div class="row">
 		<div class="panel with-nav-tabs panel-default">
@@ -14,6 +13,7 @@
 						data-toggle="tab">Open</a></li>
 					<li><a href="#tab2default" data-toggle="tab">In Progess</a></li>
 					<li><a href="#tab3default" data-toggle="tab">Done</a></li>
+					<h4 class="boardTitle">Backlog Items</h4>
 				</ul>
 			</div>
 			<div class="panel-body">
@@ -40,7 +40,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Task/id=${backlog.id}">${backlog.feature.title}</a>
+											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
 										<p>
@@ -89,7 +89,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Task/id=${backlog.id}">${backlog.feature.title}</a>
+											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
 										<p>
@@ -137,7 +137,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Task/id=${backlog.id}">${backlog.feature.title}</a>
+											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
 										<p>

@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Task {
 
@@ -20,18 +23,21 @@ public class Task {
 	private String title;
 	private String description;
 	
-	@OneToMany(mappedBy="task")
-	private List<WorkLog> workLog;
-	
 	@Enumerated(EnumType.STRING)	
 	private Status status;
 	
+	@OneToMany(mappedBy="task")
+	@JsonBackReference
+	private List<WorkLog> workLog;
+	
 	@ManyToOne
 	@JoinColumn(name="backlogId")
+	@JsonBackReference
 	private Backlog backlog;
 	
 	@ManyToOne
 	@JoinColumn(name="memberId")
+	@JsonBackReference
 	private TeamMember teamMember;
 	
 	public Task(){}
@@ -60,6 +66,7 @@ public class Task {
 	public void setWorkLog(List<WorkLog> workLog) {
 		this.workLog = workLog;
 	}
+	@JsonIgnore
 	public Backlog getBacklog() {
 		return backlog;
 	}
