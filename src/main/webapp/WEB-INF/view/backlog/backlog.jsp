@@ -4,7 +4,6 @@
 
 <div class="row">
 
-
 	<!-- NavBar -->
 	<div class="row">
 		<div class="panel with-nav-tabs panel-default">
@@ -14,6 +13,7 @@
 						data-toggle="tab">Open</a></li>
 					<li><a href="#tab2default" data-toggle="tab">In Progess</a></li>
 					<li><a href="#tab3default" data-toggle="tab">Done</a></li>
+					<h4 class="boardTitle">Backlog Items</h4>
 				</ul>
 			</div>
 			<div class="panel-body">
@@ -25,10 +25,13 @@
 						<!-- <div class="addNew" data-toggle="modal" data-target="#addBacklog"> -->
 						<%-- <div id="addNewBacklog" class="addNewBacklog" name="${projectId}"> --%>
 						<div>
-							<a <%-- href="/addBacklog/${projectId}" --%>
-								href="#addBacklog" data-toggle="modal"
-								class="btn btn-default-btn-xs btn-success addNewBacklog" data-projectId = "${projectId}"><i
-								class="glyphicon glyphicon-plus" ></i>New</a>
+							<a
+								<%-- href="/addBacklog/${projectId}" --%>
+								href="#addBacklog"
+								data-toggle="modal"
+								class="btn btn-default-btn-xs btn-success addNewBacklog"
+								data-projectId="${projectId}"><i
+								class="glyphicon glyphicon-plus"></i>New</a>
 						</div>
 						<!-- Backlog -Box -Start-->
 						<c:forEach var="backlog" items="${backlogs}">
@@ -37,7 +40,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Task/id=${backlog.id}">${backlog.feature.title}</a>
+											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
 										<p>
@@ -62,8 +65,14 @@
 												data-featureid="${backlog.feature.featureId}"
 												data-featuretitle="${backlog.feature.title}"
 												data-featuredesc="${backlog.feature.description}"
-												data-featureprio="${backlog.feature.priority}">Update</a>
+												data-featureprio="${backlog.feature.priority}">Update |</a>
+
+											<span data-toggle="tooltip" data-placement="top"
+												title="delete"> <a data-toggle="modal"
+												class="delBacklog" name="${backlog.id}"
+												href="#deleteBacklog"> Delete</a></span>
 										</p>
+
 									</div>
 								</div>
 							</c:if>
@@ -80,7 +89,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Task/id=${backlog.id}">${backlog.feature.title}</a>
+											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
 										<p>
@@ -105,7 +114,12 @@
 												data-featureid="${backlog.feature.featureId}"
 												data-featuretitle="${backlog.feature.title}"
 												data-featuredesc="${backlog.feature.description}"
-												data-featureprio="${backlog.feature.priority}">Update</a>
+												data-featureprio="${backlog.feature.priority}">Update |</a>
+
+											<span data-toggle="tooltip" data-placement="top"
+												title="delete"> <a data-toggle="modal"
+												class="delBacklog" name="${backlog.id}"
+												href="#deleteBacklog"> Delete</a></span>
 										</p>
 									</div>
 								</div>
@@ -123,7 +137,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Task/id=${backlog.id}">${backlog.feature.title}</a>
+											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
 										<p>
@@ -148,7 +162,12 @@
 												data-featureid="${backlog.feature.featureId}"
 												data-featuretitle="${backlog.feature.title}"
 												data-featuredesc="${backlog.feature.description}"
-												data-featureprio="${backlog.feature.priority}">Update</a>
+												data-featureprio="${backlog.feature.priority}"> Update |</a>
+
+											<span data-toggle="tooltip" data-placement="top"
+												title="delete"> <a data-toggle="modal"
+												class="delBacklog" name="${backlog.id}"
+												href="#deleteBacklog"> Delete</a></span>
 										</p>
 									</div>
 								</div>
@@ -187,7 +206,7 @@
 									</label>
 									<div class="controls col-md-8" id="featureListDiv">
 
-										<select class="form-control" id="backlogTitOption">											
+										<select class="form-control" id="backlogTitOption">
 										</select>
 
 									</div>
@@ -261,11 +280,11 @@
 						<hr />
 						<input id="featureIdVal" type="hidden" name="featureId" value="" />
 						<div class="row">
-							
+
 							<div class="col-md-4">
 								<p id="blPriority"></p>
 							</div>
-							
+
 							<div class="col-md-4">
 								<label for="estimatedHour">Estimated Hour : </label> <input
 									type="text" id="estimatedHour" name="hourEstimated" value="" />
@@ -294,6 +313,31 @@
 		</div>
 	</div>
 	<!-- End Update Backlog -->
+
+	<!-- Delete Backlog Section START -->
+	<form id="delBacklogForm" action="/deleteBacklog/" method="post">
+		<div class="modal fade" id="deleteBacklog" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+						<h3>Delete</h3>
+					</div>
+					<div class="modal-body">
+						<p>You are about to delete a Backlog item.</p>
+						<p>Do you want to proceed?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+						<button type="submit" class="btn btn-danger">Yes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- END Delete Backlog Section -->
 
 </div>
 

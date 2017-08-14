@@ -129,7 +129,63 @@ $(document).ready(function() {
 					}
 				});
 			});
+		
+			// Delete Backlog			
+			$(".delBacklog").on('click', function() {
 
+				const backlogId = this.name;
+				$('#delBacklogForm').attr('action','/deleteBacklog/' + backlogId);
+				
+			});	
+
+			
+			//Update Task
+			// Open Update Backlog toggle with list of features
+			$(".updTask").on('click', function() {
+
+				var taskId = this.name;
+				
+				const backlogId = $(this).data("backlogid");
+				
+				var data = 'taskId=' + encodeURIComponent(taskId);
+
+				if (!data)
+					return e.preventDefault(); // stops modal from being shown
+
+				$.ajax({
+
+					type : "GET",
+					contentType : "application/json",
+					url : "/updateTask",
+					data : data,
+					dataType : 'json',
+
+					success : function(task) {
+						
+						$('#updTaskForm').attr('action','/updateTask/' + backlogId + "/" +task.id);
+											
+						$("#taskTitle1").text(task.title);
+						$("#tskTitle").val(task.title);
+						$("#taskDescription1").val(task.description);
+						
+					},
+					error : function() {
+						alert("failure");
+					}
+				});
+
+			}); //End of Update Task
+			
+			
+			// Delete Task			
+			$(".delTask").on('click', function() {
+
+				const taskId = this.name;
+				$('#delTaskForm').attr('action','/deleteTask/' + taskId);
+				
+			});	
+
+			
 	if ($('#addMsg').text() === "")
 		$('#addAlert').hide();
 	setTimeout(() => {

@@ -106,5 +106,7 @@ nav, .search-form input, .search-form button, .green-btn {
 	margin-bottom: 2px;
 }
 
-
+.boardTitle{
+	text-align:center;
+}
 
