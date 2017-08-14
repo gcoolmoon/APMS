@@ -92,6 +92,15 @@ $(document).ready(function() {
 					}
 				});
 			});
+		
+			// Delete Backlog
+			// Open Update Backlog toggle with list of features
+			$(".delBacklog").on('click', function() {
+
+				const backlogId = this.name;
+				$('#delBacklogForm').attr('action','/deleteBacklog/' + backlogId);
+				
+			});	
 
 	if ($('#addMsg').text() === "")
 		$('#addAlert').hide();

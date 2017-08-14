@@ -44,22 +44,24 @@ public class BacklogController {
 		return "/backlog/backlog";
 	}
 
-//	@RequestMapping(value = "/addBacklog/{id}", method = RequestMethod.GET)
-//	public String addBacklog(HttpServletRequest request, Model model, @PathVariable int id) {
-//		model.addAttribute("features", backlogService.getAddableFeatures(id));
-//		model.addAttribute("project", projectService.get(id));
-//		request.getSession().setAttribute("projectId", id);
-//		return "/backlog/addBacklog";
-//	}
+	// @RequestMapping(value = "/addBacklog/{id}", method = RequestMethod.GET)
+	// public String addBacklog(HttpServletRequest request, Model model,
+	// @PathVariable int id) {
+	// model.addAttribute("features", backlogService.getAddableFeatures(id));
+	// model.addAttribute("project", projectService.get(id));
+	// request.getSession().setAttribute("projectId", id);
+	// return "/backlog/addBacklog";
+	// }
 
 	@RequestMapping(value = "/addBacklog/{featureId}", method = RequestMethod.POST)
-	public String addNewBacklog(HttpServletRequest request, @ModelAttribute("backlog") Backlog backlog,@PathVariable int featureId) {
-		
+	public String addNewBacklog(HttpServletRequest request, @ModelAttribute("backlog") Backlog backlog,
+			@PathVariable int featureId) {
+
 		backlog.setFeature(featureService.get(featureId));
 		backlog.setStatus(Status.OPEN);
-		
+
 		backlogService.addBacklog(backlog);
-		
+
 		return "redirect:/Backlog/" + request.getSession().getAttribute("projectId");
 	}
 
@@ -68,7 +70,7 @@ public class BacklogController {
 	@ResponseBody
 	public List<Feature> getFeatures(@RequestParam(value = "projectId") int projectId) {
 
-		return backlogService.getAddableFeatures(projectId);		
+		return backlogService.getAddableFeatures(projectId);
 
 	}
 
@@ -90,6 +92,16 @@ public class BacklogController {
 		backlog.setFeature(featureService.get(featureId));
 		backlogService.updateBacklog(backlog);
 		request.getSession().setAttribute("backlog", backlog);
+
+		return "redirect:/Backlog/" + request.getSession().getAttribute("projectId");
+	}
+
+	// Delete Backlog
+
+	@RequestMapping(value = "/deleteBacklog/{backlogId}", method = RequestMethod.POST)
+	public String deleteBacklog(HttpServletRequest request, @PathVariable int backlogId) {
+
+		backlogService.deleteBacklog(backlogId);
 
 		return "redirect:/Backlog/" + request.getSession().getAttribute("projectId");
 	}
