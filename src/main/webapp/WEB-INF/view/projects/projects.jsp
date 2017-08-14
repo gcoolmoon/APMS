@@ -16,11 +16,18 @@
 			</c:forEach>
 			<c:set var="size" value="${project.features.size()}" />
 			<c:set var="c" value="<%= count*100 %>" />			
-			<div class="col-sm-4">
+			<div class="col-sm-4 project-item">
 				<div class="text-center green-txt">
 					<h4><a href="/Backlog/${project.projectId}" class="green-txt upper">${project.name}</a></h4>
 					<div class="chart" data-percent="${c/size}">
-						<span>${c/size}%<br>completed</span>
+						<c:choose>
+						    <c:when test="${size == 0}">
+						        <span>0.0%<br>completed</span>
+						    </c:when>
+						    <c:otherwise>
+								<span>${c/size}%<br>completed</span>
+						    </c:otherwise>
+						</c:choose>
 					</div>
 					<p>
 						${project.description}

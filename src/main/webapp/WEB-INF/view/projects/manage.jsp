@@ -23,7 +23,7 @@
 				<td class="green-txt">${project.features.size()}</td>
 				<td>
 					<a data-toggle="modal" data-pid="${project.projectId}" href="#addFeatureModal" class="addFeature btn btn-sm btn-success" title="add feature"><span class="glyphicon glyphicon-plus"></span></a>
-					<button class="btn btn-sm btn-warning" title="edit"><span class="glyphicon glyphicon-edit"></span></button>
+					<a class="btn btn-sm btn-warning" href="/projects/edit/${project.projectId}" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
 					<a href="/projects/delete/${project.projectId}" id="deleteProject" class="btn btn-sm btn-danger" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>

@@ -24,13 +24,13 @@
 				  <div class="col-sm-6">
 				  <form:label class="control-label col-sm-4" path="startDate">Start Date:</form:label>
 				    <div class="col-sm-8">
-				      <form:input type="date" class="form-control" path="startDate" value = '<fmt:formatDate value="${project.startDate}" pattern="" />' required="required" />
+				      <form:input type="date" class="form-control" path="startDate" required="required" />
 				    </div>
 				  </div>
 				  <div class="col-sm-6">
 				    <form:label class="control-label col-sm-4" path="endDate">End Date:</form:label>
 				    <div class="col-sm-8">
-				      <form:input type="date" class="form-control" path="endDate" value = '<fmt:formatDate value="${project.endDate}" pattern="MM-dd-yyyy" />' required="required" />
+				      <form:input type="date" class="form-control" path="endDate" required="required" />
 				    </div>
 				  </div>
 			  </div>

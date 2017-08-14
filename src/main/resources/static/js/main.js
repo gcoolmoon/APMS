@@ -13,7 +13,7 @@ $(document).ready(function() {
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
-			url : "/getFeatures",
+			url : "/projects/feature/all",
 			data : data,
 			dataType : 'json',
 

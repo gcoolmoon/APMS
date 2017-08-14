@@ -46,7 +46,7 @@
 	    </div> <!-- End mainmenu area -->
 	    <div class="container-fluid content">
 		  <div class="row">
-		    <div class="col-sm-3 col-lg-2">
+		    <div class="col-sm-3 col-lg-2 side-bar-holder">
 		      <nav class="navbar navbar-default navbar-fixed-side side-bar">
 		        <div class="container-fluid">
 				    <div class="collapse navbar-collapse" id="myNavbar">
@@ -66,4 +66,4 @@
 				  </div>
 		      </nav>
 		    </div>
-		    <div class="col-sm-9 col-lg-10">
+		    <div class="col-sm-9 col-lg-10 col-sm-offset-2 wrapper">

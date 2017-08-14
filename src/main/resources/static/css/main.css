@@ -31,6 +31,9 @@ nav, .search-form input, .search-form button, .green-btn {
 }
 .mainmenu-area {
 	font-size: 12px;
+	position: fixed;
+    z-index: 1000;
+    width: 100%;
 }
 .navbar {
   	margin-bottom: 0;
@@ -53,6 +56,9 @@ nav, .search-form input, .search-form button, .green-btn {
 .search-form input{
 	height: 32px;
     box-shadow: none;
+}
+.login-form .main-title{
+	padding-left: 20px;
 }
 .content>.row{
     margin-right: 0;
@@ -105,8 +111,60 @@ nav, .search-form input, .search-form button, .green-btn {
 #viewFeaturesModal li p{
 	margin-bottom: 2px;
 }
-
 .boardTitle{
 	text-align:center;
 }
+.project-item{
+	margin-bottom: 20px;
+}
+.side-bar-holder{
+	position: fixed;
+    height: 100%;
+    top: 50px;
+}
+.wrapper{
+    margin-top: 50px;
+}
+.login-wrapper{
+	background-color: #000;
+    overflow: hidden;
+}
+.login-wrapper img{
+	width: 60%;
+	margin-left: 15%;
+	margin-top: 70px;
+}
+.login-form{
+	position: absolute;
+    width: 400px;
+    background-color: rgba(0,0,0,0.9);
+    top: 40%;
+    right: 10%;
+}
+.login-form .form-group{
+	margin: 10px;
+}
+.bottom-style{
+	background-color: #1abc9c;
+	height: 10px;
+    position: absolute;
+	left: 0; 
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

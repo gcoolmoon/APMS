@@ -2,6 +2,7 @@ package edu.mum.apms.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Project;
@@ -64,6 +67,18 @@ public class ProjectController {
 		request.setAttribute("message", "New project is successfully added!");
 		return "forward:/projects";
 	}
+	@RequestMapping(value = "/projects/edit/{pid}", method = RequestMethod.GET)
+	public String editProject(HttpServletRequest request, Model model, @PathVariable int pid) {
+		model.addAttribute("project", projectService.get(pid));
+		return "/projects/edit";
+	}
+	@RequestMapping(value = "/projects/edit", method = RequestMethod.POST)
+	public String editExistingProject(HttpServletRequest request, @ModelAttribute("project") Project project) {
+		project.setFeatures(new ArrayList<Feature>());
+		projectService.add(project);
+		request.setAttribute("message", "New project is successfully added!");
+		return "forward:/projects";
+	}
 	@RequestMapping(value = "/projects/delete/{id}", method = RequestMethod.GET)
 	public String deleteProject(HttpServletRequest request, @PathVariable int id) {
 		projectService.delete(id);
@@ -78,6 +93,13 @@ public class ProjectController {
 		current.getFeatures().add(feature);
 		projectService.edit(current);
 		return "redirect:/projects/manage";
+	}
+	@RequestMapping(value = "/projects/feature/all", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Feature> getFeatures(@RequestParam(value = "projectId") int projectId) {
+
+		return featureService.getAll(projectId);
+
 	}
 
 }
