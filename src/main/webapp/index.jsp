@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>IMDB</title>
+<title>APMS</title>
 </head>
 <body>
-	<h1>IMDB - TV Series</h1>
+	<h1>Agile Project Management System</h1>
 	
 		
-	<a href="movieList"> TV Series</a>
 </body>
 </html>
