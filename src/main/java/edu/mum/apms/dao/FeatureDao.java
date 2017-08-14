@@ -13,4 +13,8 @@ public interface FeatureDao extends JpaRepository<Feature, Integer>  {
 //	public void delete(int featureId);
 //	public Feature get(int featureId);
 //	public List<Feature> getAll(int projectId);
+	
+	//@Query("from Feature f where isEmpty(f.backlog) and f.project.projectId = :id")
+	//public List<Feature> findEmptyBacklogsById(int id);
+	
 }
