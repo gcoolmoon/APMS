@@ -73,8 +73,9 @@ public class BacklogServiceImpl implements BacklogService{
 
 	@Override
 	public List<Feature> getAddableFeatures(int projectId) {
-		// TODO Auto-generated method stub
 		
+		//return featureDao.findEmptyBacklogsById(projectId);		
+
 		List<Feature> features = featureDao.findByProject(projectDao.findOne(projectId));
 		List<Feature> featureList = new ArrayList<Feature>();
 		
