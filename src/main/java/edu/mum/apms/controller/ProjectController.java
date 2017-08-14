@@ -43,6 +43,7 @@ public class ProjectController {
 	@RequestMapping("/projects")
 	public String viewProjects(HttpServletRequest request, Model model) {
 		model.addAttribute("message", request.getAttribute("message"));
+		model.addAttribute("projects", projectService.getAll());
 		return "/projects/projects";
 	}
 	@RequestMapping(value = "/projects/manage", method = RequestMethod.GET)
