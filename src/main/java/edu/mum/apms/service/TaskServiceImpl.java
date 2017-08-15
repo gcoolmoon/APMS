@@ -23,11 +23,11 @@ public class TaskServiceImpl implements TaskService {
 		return taskDao.findOne(taskId);
 	}
 
-	@Override
-	@Transactional
-	public List<Task> getAllTaskByBacklog(Backlog backlog) {		
-		return taskDao.findByBacklog(backlog);		
-	}
+//	@Override
+//	@Transactional
+//	public List<Task> getAllTaskByBacklog(Backlog backlog) {		
+//		return taskDao.findByBacklog(backlog);		
+//	}
 
 	@Override
 	@Transactional
@@ -57,7 +57,8 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public List<Task> getAllTaskByBacklog(Backlog backlog) {
 		// TODO Auto-generated method stub
-		return null;
+		return taskDao.findByBacklog(backlog);
 	}
+
 
 }
