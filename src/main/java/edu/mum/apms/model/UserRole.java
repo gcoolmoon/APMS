@@ -17,7 +17,7 @@ public class UserRole {
 	private Integer id;	
 
 	@Column(name="ROLE", length=15, unique=true, nullable=false)
-	private String Role = UserRoleType.USER.getUserProfileType();
+	private String role;
 	
 	public Integer getId() {
 		return id;
@@ -28,11 +28,11 @@ public class UserRole {
 	}
 
 	public String getRole() {
-		return Role;
+		return role;
 	}
 
 	public void setRole(String role) {
-		Role = role;
+		role = role;
 	}
 
 	
