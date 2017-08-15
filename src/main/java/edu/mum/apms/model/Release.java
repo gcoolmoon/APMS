@@ -15,6 +15,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table (name = "releases")
 public class Release {
@@ -30,6 +32,7 @@ public class Release {
 	private Date releaseDate;
 	
 	@OneToMany(mappedBy="release")
+	 @JsonManagedReference
 	private List<Sprint> sprint = new ArrayList<>();
 	
 	
