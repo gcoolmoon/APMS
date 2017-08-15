@@ -45,7 +45,7 @@ public class ReleaseController {
 		return "release";
 	}
 	
-	//For add and update project both
+	//For add and update release both
 	@RequestMapping(value= "/release/add", method = RequestMethod.POST)
 	public String addProject(@ModelAttribute("release") Release r){
 			
