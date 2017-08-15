@@ -12,6 +12,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Sprint {
 
@@ -28,6 +30,7 @@ public class Sprint {
 	
 	@ManyToOne
 	@JoinColumn(name="releaseId")
+	@JsonBackReference
 	private Release release;
 
 	public int getSprintId() {
