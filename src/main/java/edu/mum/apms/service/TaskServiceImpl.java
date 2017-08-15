@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.TaskDao;
+import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Task;
 
 @Service
@@ -22,12 +23,12 @@ public class TaskServiceImpl implements TaskService {
 		return taskDao.findOne(taskId);
 	}
 
-	@Override
-	@Transactional
-	public List<Task> getAllTaskByBacklog(int backlogId) {
-		//return taskDao.getAllActiveByBacklog(backlogId);
-		return null;
-	}
+//	@Override
+//	@Transactional
+//	public List<Task> getAllTaskByBacklog(int backlogId) {
+//		//return taskDao.getAllActiveByBacklog(backlogId);
+//		return null;
+//	}
 
 	@Override
 	@Transactional
@@ -52,6 +53,12 @@ public class TaskServiceImpl implements TaskService {
 	@Transactional
 	public void deleteTask(int taskId) {
 		taskDao.delete(taskId);
+	}
+
+	@Override
+	public List<Task> getAllTaskByBacklog(Backlog backlog) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

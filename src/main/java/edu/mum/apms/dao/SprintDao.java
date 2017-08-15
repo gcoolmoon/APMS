@@ -11,9 +11,9 @@ public interface SprintDao extends JpaRepository<Sprint, Integer> {
 	
 	//List<Sprint> getSprints(String releaseVersion);
 	
-	// 	List<Sprint> getSprintsByDueDate(Date dueDate, String releaseVersion);
+	//List<Sprint> getSprintsByDueDate(Date dueDate, String releaseVersion);
 	
-	//	void addSprint(Sprint sprint);
+//	void addSprint(Sprint sprint);
 	
 	//void getSprint(int sprintId);
 	

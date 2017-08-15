@@ -6,20 +6,26 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
+@Table (name = "releases")
 public class Release {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int releaseId;
 	
 	private String version;
 	private String description;
-	
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Temporal(TemporalType.DATE)
 	private Date releaseDate;
 	
@@ -27,6 +33,18 @@ public class Release {
 	private List<Sprint> sprint = new ArrayList<>();
 	
 	
+	public Release() {
+		
+	}
+	
+	public Release(int releaseId, String version, String description, Date releaseDate, List<Sprint> sprint) {
+		
+		this.releaseId = releaseId;
+		this.version = version;
+		this.description = description;
+		this.releaseDate = releaseDate;
+		this.sprint = sprint;
+	}
 	
 	public int getReleaseId() {
 		return releaseId;

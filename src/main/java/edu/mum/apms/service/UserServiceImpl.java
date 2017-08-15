@@ -8,85 +8,124 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.apms.dao.UserDao;
+import edu.mum.apms.dao.UserDao;
+import edu.mum.apms.model.User;
 import edu.mum.apms.model.User;
 
 
 
 //@Service("userService")
+@Service
 @Transactional
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	private UserDao dao;
-
-	//@Autowired
-    //private PasswordEncoder passwordEncoder;
+	private UserDao userDao;
 	
 	
-	/*
-	 * Since the method is running with Transaction, No need to call hibernate update explicitly.
-	 * Just fetch the entity from db and update it with proper values within transaction.
-	 * It will be updated in db once transaction ends. 
-	 */
+
+	@Transactional
+	public void add(User user) {
+		userDao.save(user);
+	}
+
+	@Transactional
+	public void edit(User user) {
+		userDao.save(user);
+	}
+
+	@Transactional
+	public void delete(int userId) {
+		userDao.delete(userId);
+	}
+
+	@Transactional
+	public User get(int userId) {
+		return userDao.findOne(userId);
+	}
+
+	@Transactional
+	public List<User> getAll() {
+		return userDao.findAll();
+	}
+
+	@Override
+	public boolean checkPassword(int userId, String pass) {
+		// TODO Auto-generated method stub
+		return pass.equals(get(userId).getPassword());
+	}
 	
 
-	public List<User> findAllUsers() {
-		return dao.findAll();
-	}
+	
 
-	public boolean isUserEmpIdUnique(Integer id, String empId) {
-		User user = findByEmployeeId(empId);
-		return ( user == null || ((id != null) && (user.getId() == id)));
-	}
-
-	@Override
-	public User findById(int id) {
-		// TODO Auto-generated method stub
-		return dao.findOne(id);
-	}
-
-	@Override
-	public User findByEmployeeId(String empId) {
-		// TODO Auto-generated method stub
-		if(dao.findByEmployeeId(empId)!= null)
-			return dao.findByEmployeeId(empId).get(0);
-		else
-			return null;
-	}
-
-	@Override
-	public void saveUser(User user) {
-		// TODO Auto-generated method stub
-		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setPassword(user.getPassword());
-		dao.save(user);
-		
-	}
-
-	@Override
-	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		User entity = dao.findById(user.getId());
-		if(entity!=null){
-			entity.setEmployeeId(user.getEmployeeId());
-			if(!user.getPassword().equals(entity.getPassword())){
-				//entity.setPassword(passwordEncoder.encode(user.getPassword()));
-				entity.setPassword(user.getPassword());
-			}
-			entity.setFirstName(user.getFirstName());
-			entity.setLastName(user.getLastName());
-			entity.setEmail(user.getEmail());
-			entity.setUserRoles(user.getUserRoles());
-		}
-		
-	}
-
-	@Override
-	public void deleteUserByEmpId(String empId) {
-		// TODO Auto-generated method stub
-		dao.deleteByEmployeeId(empId);
-		
-	}
+//	//@Autowired
+//    //private PasswordEncoder passwordEncoder;
+//	
+//	
+//	/*
+//	 * Since the method is running with Transaction, No need to call hibernate update explicitly.
+//	 * Just fetch the entity from db and update it with proper values within transaction.
+//	 * It will be updated in db once transaction ends. 
+//	 */
+//	
+//
+//	public List<User> findAllUsers() {
+//		return dao.findAll();
+//	}
+//
+//	public boolean isUserEmpIdUnique(Integer id, String empId) {
+//		User user = findByEmployeeId(empId);
+//		return ( user == null || ((id != null) && (user.getId() == id)));
+//	}
+//
+//	@Override
+//	public User findById(int id) {
+//		// TODO Auto-generated method stub
+//		return dao.findOne(id);
+//	}
+//
+//	@Override
+//	public User findByEmployeeId(String empId) {
+//		// TODO Auto-generated method stub
+//		if(dao.findByEmployeeId(empId)!= null)
+//			return dao.findByEmployeeId(empId).get(0);
+//		else
+//			return null;
+//	}
+//
+//	@Override
+//	public void saveUser(User user) {
+//		// TODO Auto-generated method stub
+//		//user.setPassword(passwordEncoder.encode(user.getPassword()));
+//		user.setPassword(user.getPassword());
+//		dao.save(user);
+//		
+//	}
+//
+//	@Override
+//	public void updateUser(User user) {
+//		// TODO Auto-generated method stub
+//		User entity = dao.findById(user.getId());
+//		if(entity!=null){
+//			entity.setEmployeeId(user.getEmployeeId());
+//			if(!user.getPassword().equals(entity.getPassword())){
+//				//entity.setPassword(passwordEncoder.encode(user.getPassword()));
+//				entity.setPassword(user.getPassword());
+//			}
+//			entity.setFirstName(user.getFirstName());
+//			entity.setLastName(user.getLastName());
+//			entity.setEmail(user.getEmail());
+//			entity.setUserRoles(user.getUserRoles());
+//		}
+//		
+//	}
+//
+//	@Override
+//	public void deleteUserByEmpId(String empId) {
+//		// TODO Auto-generated method stub
+//		dao.deleteByEmployeeId(empId);
+//		
+//	}
 
 	
 }

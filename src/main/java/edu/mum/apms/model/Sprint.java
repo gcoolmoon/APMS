@@ -10,14 +10,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Sprint {
 
 	@Id @GeneratedValue
 	private int sprintId;
-	
+
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Temporal(TemporalType.DATE)
 	private Date startDate;
+    
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	@ManyToOne

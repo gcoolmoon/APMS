@@ -1,4 +1,4 @@
-package edu.mum.apms.service;
+package edu.mum.apms.dao;
 
 import java.util.List;
 

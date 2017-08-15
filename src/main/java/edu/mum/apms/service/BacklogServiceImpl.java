@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.BacklogDao;
 import edu.mum.apms.model.Backlog;
+import edu.mum.apms.model.Feature;
 
 @Service
 public class BacklogServiceImpl implements BacklogService{
@@ -53,6 +54,12 @@ public class BacklogServiceImpl implements BacklogService{
 	@Transactional
 	public void deleteBacklog(int backlogId) {
 		backlogDao.delete(backlogId);		
+	}
+
+	@Override
+	public List<Feature> getAddableFeatures(int projectId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
