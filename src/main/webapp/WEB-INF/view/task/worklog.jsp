@@ -24,6 +24,7 @@
 
 						<thead>
 							<th>DATE</th>
+							<th>Logged By</th>
 							<th>WORKED ON</th>
 							<th>DESCRIPTION</th>
 							<th>HOUR LOGGED</th>
@@ -34,6 +35,7 @@
 								<c:forEach var="worklog" items="${task.getWorkLog()}">
 									<tr>
 										<td>${worklog.loggedDate}</td>
+										<td>${worklog.teamMember.firstName} ${worklog.teamMember.lastName}
 										<td>${task.title}</td>
 										<td>${worklog.description}</td>
 										<td>${worklog.hourLogged }</td>
