@@ -10,7 +10,8 @@
 			<div class="col-md-12">
 				<h4>Team Members</h4>
 				<div>
-					<input type="hidden" /> <a href="#addTeam" data-toggle="modal"
+					<input type="hidden" /> 
+					<a href="#addTeam" data-toggle="modal"
 						class="btn btn-default-btn-xs btn-success addNewTeam"><i
 						class="glyphicon glyphicon-plus"></i>New</a>
 				</div>
@@ -37,7 +38,16 @@
 									<td>${team.position}</td>
 									<td><p data-placement="top" data-toggle="tooltip"
 											title="Delete">
-											
+											<span data-placement="top" data-toggle="tooltip"
+												title="Edit"/>
+												<button class=" updTeam btn btn-primary btn-xs"
+													class="updTeam" name="${team.id}" data-title="Edit"
+													data-toggle="modal" class="updTeam"
+													data-target="#updateTeam" data-userId="${team.user.id}"
+													data-position="${team.position}"
+													data-teamName="${team.user.firstName} ${team.user.lastName}">
+													<span class="glyphicon glyphicon-pencil"></span>
+												</button>
 											<button class=" delTMMember btn btn-danger btn-xs"
 												name="${team.id}" data-title="Delete" data-toggle="modal"
 												data-target="#delTeam">
@@ -94,7 +104,7 @@
 									</label>
 									<div class="controls col-md-8 ">
 										<input class="input-md  textinput textInput form-control"
-											id="memberPosition11" maxlength="30" name="description"
+											id="memberPosition11" maxlength="30" name="position"
 											placeholder="Add Position" style="margin-bottom: 10px"
 											type="text" />
 									</div>
@@ -113,6 +123,43 @@
 		</form>
 	</div>
 	<!-- Add Team Section -End-->
+
+
+	<!-- Edit Starts here -->
+	<div class="modal fade" id="updateTeam" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Update Team</h4>
+				</div>
+
+				<form id="updTeamForm" action="/updateTeam/" method="post">
+					<div class="modal-body">
+						<p id="teamName">Team Name</p>
+						<hr />
+						<input type="hidden" id="teamId1" name="id" value=""/>
+						<div class="row">
+							<div class="col-md-4">
+								<label for="teamPosition">Positon : </label> <input type="text"
+									id="teamPosition" name="position" value="" />
+							</div>							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-success">Save</button>
+					</div>
+				</form>
+			</div>
+			<!-- model content  -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- Edit Ends here -->
+	
 
 	<!-- Delete TEAM Section START -->
 	<form id="delTeamForm" action="/deleteTeam/" method="post">

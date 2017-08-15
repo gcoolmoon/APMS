@@ -281,7 +281,7 @@ $(document).ready(function() {
 				$('#delWorklogForm').attr('action','/deleteWorklog/' + worklogId);
 				
 			});	
-			
+
 			
 			// Populate Backlog Members
 			/*$(".viewTeam").on('click', function() {
@@ -324,14 +324,13 @@ $(document).ready(function() {
 			
 			
 			// Add Team Member
-			$(".addTeam").on('click', function() {
-				alert("cal");
+			$(".addNewTeam").on('click', function() {
+				
 				$.ajax({
 		
 					type : "GET",
 					contentType : "application/json",
-					url : "/getUsers",
-					data : data,
+					url : "/getUsers",					
 					dataType : 'json',
 		
 					success : function(Users) {
@@ -341,13 +340,13 @@ $(document).ready(function() {
 							
 							let optionData = $('<option/>', {						        
 								value: User.id,
-						        text : User.firstName + User.lastName 	
+						        text : User.firstName + ' ' + User.lastName 	
 						        
 						    });	
 							
 							$('#userInfoOption').append(optionData);
 						});
-						$('#addTeamForm').attr('action','/addTeam/'+ users[0].id);
+						$('#addTeamForm').attr('action','/addTeam/'+ Users[0].id);
 						
 					},
 					error : function() {
@@ -361,7 +360,32 @@ $(document).ready(function() {
 				$('#addTeamForm').attr('action','/addTeam/'+ $(this).find('option:selected').val());
 			});
 				
+			
+			// Open Update Team toggle 
+			$(".updTeam").on('click', function() {
+
+				var teamId = this.name;
 				
+				const userId = $(this).data("userid");
+				const position = $(this).data("position");
+				const teamName = $(this).data("teamname");
+				
+				$("#teamName").text(teamName);				
+				$("#teamPosition").val(position);
+				$("#teamId1").val(teamId);
+				
+				$('#updTeamForm').attr('action','/updateTeam/' +userId );
+				
+			});
+			
+			// Delete Member			
+			$(".delTMMember").on('click', function() {
+				
+				const teamId = this.name;
+				$('#delTeamForm').attr('action','/deleteTeam/' + teamId);
+				
+			});	
+			
 			
 			
 	if ($('#addMsg').text() === "")
