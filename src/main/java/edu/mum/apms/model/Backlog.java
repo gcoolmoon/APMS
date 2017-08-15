@@ -2,6 +2,7 @@ package edu.mum.apms.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -30,7 +31,7 @@ public class Backlog {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
-	@OneToMany(mappedBy = "backlog")
+	@OneToMany(mappedBy = "backlog",cascade = CascadeType.REMOVE)
 	@JsonBackReference
 	private List<Task> taskList;
 
