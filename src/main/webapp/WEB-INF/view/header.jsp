@@ -51,7 +51,7 @@
 		        <div class="container-fluid">
 				    <div class="collapse navbar-collapse" id="myNavbar">
 				      <ul class="nav navbar-nav navbar-left main-nav space-sm-bottom">
-				        <li class="active"><a href="/projects">Projects</a></li>
+				        <li><a href="/projects">Projects</a></li>
 				        <li><a href="#">Agile Board</a></li>
 				        <li><a href="#">Releases</a></li>
 				        <li><a href="#">All Issues</a></li>

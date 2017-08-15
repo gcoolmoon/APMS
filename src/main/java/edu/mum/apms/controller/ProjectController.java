@@ -49,6 +49,12 @@ public class ProjectController {
 		model.addAttribute("projects", projectService.getAll());
 		return "/projects/projects";
 	}
+	@RequestMapping("/projects/{msg}")
+	public String viewProjectsWithMsg(HttpServletRequest request, Model model, @PathVariable String msg) {
+		model.addAttribute("message", msg);
+		model.addAttribute("projects", projectService.getAll());
+		return "/projects/projects";
+	}
 	@RequestMapping(value = "/projects/manage", method = RequestMethod.GET)
 	public String manageProjects(Model model) {
 		model.addAttribute("projects", projectService.getAll());
@@ -64,8 +70,8 @@ public class ProjectController {
 	public String addNewProject(HttpServletRequest request, @ModelAttribute("project") Project project) {
 		project.setFeatures(new ArrayList<Feature>());
 		projectService.add(project);
-		request.setAttribute("message", "New project is successfully added!");
-		return "forward:/projects";
+		String msg =  "New project is successfully added!";
+		return "redirect:/projects/"+msg;
 	}
 	@RequestMapping(value = "/projects/edit/{pid}", method = RequestMethod.GET)
 	public String editProject(HttpServletRequest request, Model model, @PathVariable int pid) {
@@ -74,10 +80,11 @@ public class ProjectController {
 	}
 	@RequestMapping(value = "/projects/edit", method = RequestMethod.POST)
 	public String editExistingProject(HttpServletRequest request, @ModelAttribute("project") Project project) {
-		project.setFeatures(new ArrayList<Feature>());
-		projectService.add(project);
-		request.setAttribute("message", "New project is successfully added!");
-		return "forward:/projects";
+		System.out.println(project.getProjectId());
+		projectService.edit(project);
+		request.setAttribute("message", "Project successfully updated!");
+		String msg = "Project successfully updated!";
+		return "redirect:/projects/"+msg;
 	}
 	@RequestMapping(value = "/projects/delete/{id}", method = RequestMethod.GET)
 	public String deleteProject(HttpServletRequest request, @PathVariable int id) {
@@ -93,6 +100,28 @@ public class ProjectController {
 		current.getFeatures().add(feature);
 		projectService.edit(current);
 		return "redirect:/projects/manage";
+	}
+	@RequestMapping(value = "/projects/features/delete/{id}", method = RequestMethod.GET)
+	public String deleteProjectFeature(HttpServletRequest request, @PathVariable int id) {
+		featureService.delete(id);
+		return "redirect:/projects/manage";
+	}
+	Project editProj;
+	@RequestMapping(value = "/projects/features/edit/{id}", method = RequestMethod.GET)
+	public String editProjectFeature(HttpServletRequest request, @PathVariable int id, Model model) {
+		Feature f = featureService.get(id);
+		model.addAttribute("feature", f);
+		editProj = f.getProject();
+		return "/projects/editFeature";
+	}
+	@RequestMapping(value = "/projects/features/edit", method = RequestMethod.POST)
+	public String editExistingFeature(HttpServletRequest request, @ModelAttribute("feature") Feature feature) {
+		//feature
+		feature.setProject(editProj);
+		featureService.edit(feature);
+		request.setAttribute("message", "Project successfully updated!");
+		String msg = "Feature successfully updated!";
+		return "redirect:/projects/edit/" + editProj.getProjectId();
 	}
 	@RequestMapping(value = "/projects/feature/all", method = RequestMethod.GET)
 	@ResponseBody

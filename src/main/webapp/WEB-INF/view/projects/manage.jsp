@@ -24,7 +24,7 @@
 				<td>
 					<a data-toggle="modal" data-pid="${project.projectId}" href="#addFeatureModal" class="addFeature btn btn-sm btn-success" title="add feature"><span class="glyphicon glyphicon-plus"></span></a>
 					<a class="btn btn-sm btn-warning" href="/projects/edit/${project.projectId}" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
-					<a href="/projects/delete/${project.projectId}" id="deleteProject" class="btn btn-sm btn-danger" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="/projects/delete/${project.projectId}" class="btn btn-sm btn-danger deleteProject" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
 				</td>
 			</tr>
 		</c:forEach>
@@ -39,7 +39,7 @@
 	          <h4 class="green-txt"><span class="glyphicon glyphicon-plus"></span> Add Feature</h4>
 	        </div>
 	        <div class="modal-body">
-	          <form:form class="form-horizontal" method="POST" action="/projects/addFeature" modelAttribute="feature">
+	          <form:form class="form-horizontal space-sm" method="POST" action="/projects/addFeature" modelAttribute="feature">
 				  <div class="form-group">
 				    <form:label class="control-label col-sm-2" path="title">Feature Title:</form:label>
 				    <div class="col-sm-10">
@@ -65,7 +65,7 @@
 					  </div>
 				  </div>
 				  <input type="hidden" id="addFeatureSubmit" name = "pid"/>
-	            <button type="submit" class="btn btn-default btn-success btn-block green-btn"><span class="glyphicon glyphicon-plus"></span>Add</button>
+	            <button type="submit" class="space-sm-bottom btn btn-default btn-success btn-block green-btn"><span class="glyphicon glyphicon-plus"></span>Add</button>
 	          </form:form>
 	        </div>
 	      </div>
