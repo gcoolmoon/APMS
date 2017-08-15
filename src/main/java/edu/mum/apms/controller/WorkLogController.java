@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Task;
 import edu.mum.apms.model.WorkLog;
 import edu.mum.apms.service.BacklogService;
@@ -25,17 +26,18 @@ import edu.mum.apms.service.WorklogService;
 public class WorkLogController {
 
 	@Autowired
+	private BacklogService backlogService;
+
+	@Autowired
 	private WorklogService worklogService;
 
 	@Autowired
 	private TaskService taskService;
-	@Autowired
-	private BacklogService backlogService;
 
-	// Show Tasks
+	// Show Worklog
 	@RequestMapping(value = "/WorkLog/{backlogId}", method = RequestMethod.GET)
-	public String showTask(HttpServletRequest request, Model model, @PathVariable int backlogId) {
-
+	public String showWorklog(HttpServletRequest request, Model model, @PathVariable int backlogId) {
+		
 		model.addAttribute("tasks", taskService.getAllTaskByBacklog(backlogService.getBacklogById(backlogId)));
 		model.addAttribute("backlog", backlogService.getBacklogById(backlogId));
 
@@ -55,7 +57,7 @@ public class WorkLogController {
 
 	// Add Worklog
 	@RequestMapping(value = "/addWorklog/{taskId}", method = RequestMethod.POST)
-	public String addNewBacklog(HttpServletRequest request, @ModelAttribute("worklog") WorkLog worklog,
+	public String addNewWorklog(HttpServletRequest request, @ModelAttribute("worklog") WorkLog worklog,
 			@PathVariable int taskId) {
 
 		worklog.setTask(taskService.getTaskById(taskId));
@@ -81,7 +83,7 @@ public class WorkLogController {
 
 	// Update Worklog
 	@RequestMapping(value = "/updateWorklog/{taskId}/{worklogId}", method = RequestMethod.POST)
-	public String updateBacklog(HttpServletRequest request, @ModelAttribute("worklog") WorkLog worklog,
+	public String updateWorklog(HttpServletRequest request, @ModelAttribute("worklog") WorkLog worklog,
 			@PathVariable int taskId, @PathVariable int worklogId) {
 
 		worklog.setId(worklogId);
@@ -93,7 +95,7 @@ public class WorkLogController {
 
 	// Delete Worklog
 	@RequestMapping(value = "/deleteWorklog/{worklogId}", method = RequestMethod.POST)
-	public String deleteBacklog(HttpServletRequest request, @PathVariable int worklogId) {
+	public String deleteWorklog(HttpServletRequest request, @PathVariable int worklogId) {
 
 		worklogService.deleteWorklog(worklogId);
 

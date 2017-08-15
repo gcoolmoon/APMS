@@ -11,13 +11,13 @@ import edu.mum.apms.model.UserRoleType;
 
 public interface UserDao extends JpaRepository<User, Integer>{
 
-//	User findById(int id);
+	User findById(int id);
 	
-//	User findByEmpId(String empId);
-//	
+	List<User> findByEmployeeId(String empId);
+	
 //	void save(User user);
 //	
-//	void deleteByEmpId(String empId);
+	void deleteByEmployeeId(String empId);
 	
 //	boolean addRole(String empId, UserRoleType role);
 //	

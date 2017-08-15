@@ -2,11 +2,11 @@ package edu.mum.apms.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -18,7 +18,7 @@ public class TeamMember {
 	private int id;
 	private String position;
 	
-	@OneToMany
+	@OneToMany(mappedBy="teamMember",cascade = CascadeType.REMOVE)
 	private List<Task> tasksAssigned ;
 	
 	@OneToOne

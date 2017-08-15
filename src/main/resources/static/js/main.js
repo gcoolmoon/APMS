@@ -230,8 +230,9 @@ $(document).ready(function() {
 			});
 				
 			
-			$("#backlogTitOption").change(function() {
-				$('#addBacklogForm').attr('action','/addBacklog/'+ $(this).find('option:selected').val());
+			$("#taskTitOption").change(function() {			
+				
+				$('#addWorklogForm').attr('action','/addWorklog/'+ $(this).find('option:selected').val());
 			});
 
 			
@@ -280,6 +281,87 @@ $(document).ready(function() {
 				$('#delWorklogForm').attr('action','/deleteWorklog/' + worklogId);
 				
 			});	
+			
+			
+			// Populate Backlog Members
+			/*$(".viewTeam").on('click', function() {
+					
+				let backlogId = $(this).name;
+				
+				let data = 'backlogId=' + encodeURIComponent(backlogId);
+				
+				$.ajax({
+		
+					type : "GET",
+					contentType : "application/json",
+					url : "/getTeamMembers",
+					data : data,
+					dataType : 'json',
+		
+					success : function(members) {
+						$('#memberTbody').empty();
+						let tableData = "";
+						$.each(members, function(index, Member) {
+							
+							$("#tblMember").find('tbody')
+						    .append($('<tr>')
+						        .append($('<td>')
+						            
+						                .attr('class', 'h6')
+						                .text(Member.user.firstName)
+						            )
+						        )
+						    );							
+
+						});						
+						
+					},
+					error : function() {
+						alert("failure");
+					}
+				});
+			});*/
+			
+			
+			// Add Team Member
+			$(".addTeam").on('click', function() {
+				alert("cal");
+				$.ajax({
+		
+					type : "GET",
+					contentType : "application/json",
+					url : "/getUsers",
+					data : data,
+					dataType : 'json',
+		
+					success : function(Users) {
+						$('#userInfoOption').empty();
+						let optionData = "";
+						$.each(Users, function(index, User) {
+							
+							let optionData = $('<option/>', {						        
+								value: User.id,
+						        text : User.firstName + User.lastName 	
+						        
+						    });	
+							
+							$('#userInfoOption').append(optionData);
+						});
+						$('#addTeamForm').attr('action','/addTeam/'+ users[0].id);
+						
+					},
+					error : function() {
+						alert("failure");
+					}
+				});
+			});
+				
+			
+			$("#userInfoOption").change(function() {
+				$('#addTeamForm').attr('action','/addTeam/'+ $(this).find('option:selected').val());
+			});
+				
+				
 			
 			
 	if ($('#addMsg').text() === "")
