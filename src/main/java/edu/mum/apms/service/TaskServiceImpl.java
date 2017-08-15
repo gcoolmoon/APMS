@@ -57,7 +57,8 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public List<Task> getAllTaskByBacklog(Backlog backlog) {
 		// TODO Auto-generated method stub
-		return taskDao.findByBacklog(backlog);
+		return taskDao.findByBacklog(backlog);		
+
 	}
 
 
