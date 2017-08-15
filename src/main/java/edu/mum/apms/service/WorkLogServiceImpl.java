@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.WorklogDao;
+import edu.mum.apms.model.Task;
 import edu.mum.apms.model.WorkLog;
 
 @Service
@@ -24,8 +25,8 @@ public class WorkLogServiceImpl implements WorklogService {
 
 	@Override
 	@Transactional
-	public List<WorkLog> getAllWorklogByTask(int taskId) {
-		return worklogDao.findByTask(taskId);
+	public List<WorkLog> getAllWorklogByTask(Task task) {
+		return worklogDao.findByTask(task);
 	}
 
 	@Override
