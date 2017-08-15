@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.apms.dao.UserRoleDao;
+import edu.mum.apms.dao.UserRoleDao;
+import edu.mum.apms.model.UserRole;
 import edu.mum.apms.model.UserRole;
 import edu.mum.apms.model.UserRoleType;
 
@@ -17,17 +19,32 @@ import edu.mum.apms.model.UserRoleType;
 public class UserRoleServiceImpl implements UserRoleService{
 	
 	@Autowired
-	UserRoleDao dao;
+	private UserRoleDao userRoleDao;
 	
-	public UserRole findById(int id) {
-		return dao.findOne(id);
+	
+
+	@Transactional
+	public void add(UserRole user) {
+		userRoleDao.save(user);
 	}
 
-//	public List<UserRole> findByRole(String role){
-//		return dao.findByRole(role);
-//	}
+	@Transactional
+	public void edit(UserRole user) {
+		userRoleDao.save(user);
+	}
 
-	public List<UserRole> findAll() {
-		return dao.findAll();
+	@Transactional
+	public void delete(int userId) {
+		userRoleDao.delete(userId);
+	}
+
+	@Transactional
+	public UserRole get(int userId) {
+		return userRoleDao.findOne(userId);
+	}
+
+	@Transactional
+	public List<UserRole> getAll() {
+		return userRoleDao.findAll();
 	}
 }
