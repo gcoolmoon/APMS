@@ -16,8 +16,8 @@ public class UserRole {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;	
 
-	@Column(name="TYPE", length=15, unique=true, nullable=false)
-	private String type = UserRoleType.USER.getUserProfileType();
+	@Column(name="ROLE", length=15, unique=true, nullable=false)
+	private String Role = UserRoleType.USER.getUserProfileType();
 	
 	public Integer getId() {
 		return id;
@@ -27,14 +27,15 @@ public class UserRole {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getRole() {
+		return Role;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setRole(String role) {
+		Role = role;
 	}
 
+	
 	
 
 
