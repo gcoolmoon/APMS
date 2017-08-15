@@ -16,6 +16,8 @@ public interface UserService {
 	public User get(int userId);
 	public List<User> getAll();
 	public boolean checkPassword(int userId, String pass);
+
+	public User checkPassword(String email, String pass);
 //	User findById(int id);
 //	
 //	User findByEmployeeId(String empId);

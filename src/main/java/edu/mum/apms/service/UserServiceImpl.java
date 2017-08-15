@@ -53,6 +53,20 @@ public class UserServiceImpl implements UserService{
 	public boolean checkPassword(int userId, String pass) {
 		return pass.equals(get(userId).getPassword());
 	}
+
+	@Override
+	public User checkPassword(String email, String pass) {
+		// TODO Auto-generated method stub
+		
+		List<User> users = this.getAll();
+		for (User user : users) {
+			if(email.equals(user.getEmail()) && pass.equals(user.getPassword())) {
+				return user;
+			}
+			
+		}
+		return null;
+	}
 	
 
 	
