@@ -15,7 +15,6 @@ public interface TeamMemberService {
 	public void updateTeamMember(TeamMember teamMember);
 
 	public void deleteMember(int memberId);
-	
-//	@Query("select tm FROM TeamMember tm join tm.Task t join t.tm u where u.id = :userId")
-//	public List<TeamMember> getAllTeamByBacklogId(int backlogId);
+
+	public List<TeamMember> getTeamMembersByPosition(String position);
 }

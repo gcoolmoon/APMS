@@ -31,7 +31,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	@Override
 	@Transactional
 	public void addTeamMember(TeamMember teamMember) {
-		teamDao.save(teamMember);	
+		teamDao.save(teamMember);
 	}
 
 	@Override
@@ -44,6 +44,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	@Transactional
 	public void deleteMember(int memberId) {
 		teamDao.delete(memberId);
+	}
+
+	@Override
+	public List<TeamMember> getTeamMembersByPosition(String position) {
+		// TODO Auto-generated method stub
+		return teamDao.getTeamByPosition(position);
 	}
 
 }
