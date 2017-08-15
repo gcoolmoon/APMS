@@ -37,9 +37,14 @@
 											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
-										<p>
-											<a href="#">Team members</a>
-										</p>
+
+										<div>
+											<p>
+												<a href="#teamMember" data-toggle="modal" class="viewTeam"
+													name="${backlog.id}">Team Members</a>
+											</p>
+										</div>
+
 										<ul class="list-inline list-unstyled">
 											<li data-toggle="tooltip" data-placement="top"
 												title="Hour Estimated"><span><i
@@ -91,9 +96,12 @@
 											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
-										<p>
-											<a href="#">Team members</a>
-										</p>
+										<div>
+											<p>
+												<a href="#teamMember" data-toggle="modal" class="viewTeam"
+													name="${backlog.id}">Team Members</a>
+											</p>
+										</div>
 										<ul class="list-inline list-unstyled">
 											<li data-toggle="tooltip" data-placement="top"
 												title="Hour Estimated"><span><i
@@ -143,9 +151,12 @@
 											<a href="/Task/${backlog.id}">${backlog.feature.title}</a>
 										</h4>
 										<p>${backlog.feature.description}</p>
-										<p>
-											<a href="#">Team members</a>
-										</p>
+										<div>
+											<p>
+												<a href="#teamMember" data-toggle="modal" class="viewTeam"
+													name="${backlog.id}">Team Members</a>
+											</p>
+										</div>
 										<ul class="list-inline list-unstyled">
 											<li data-toggle="tooltip" data-placement="top"
 												title="Hour Estimated"><span><i
@@ -292,7 +303,8 @@
 						<button type="submit" class="btn btn-success">Save</button>
 					</div>
 				</form>
-			</div> <!-- model content  -->
+			</div>
+			<!-- model content  -->
 
 		</div>
 	</div>
@@ -322,6 +334,38 @@
 		</div>
 	</form>
 	<!-- END Delete Backlog Section -->
+
+
+	<!-- Team Member START -->
+	<div class="modal fade" id="teamMember" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+					<h3>Member Detail</h3>
+				</div>
+				<div class="modal-body">
+					<table id="tblMember" class="pull-left col-md-8 ">
+						<tbody id="memberTbody">
+							<tr>
+								<td class="h6"><strong>Name</strong></td>								
+								<td class="h5">Dinesh</td>
+							</tr>
+							<tr>
+								<td class="h6"><strong>Position</strong></td>								
+								<td class="h5">Developer</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- END Team Member Section -->
 
 </div>
 

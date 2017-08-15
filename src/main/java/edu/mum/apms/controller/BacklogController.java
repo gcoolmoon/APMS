@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Feature;
 import edu.mum.apms.model.Status;
+import edu.mum.apms.model.TeamMember;
 import edu.mum.apms.service.BacklogService;
 import edu.mum.apms.service.FeatureService;
 import edu.mum.apms.service.ProjectService;
@@ -104,5 +105,14 @@ public class BacklogController {
 
 		return "redirect:/Backlog/" + request.getSession().getAttribute("projectId");
 	}
+
+	// Ajax call, to get All Team Members
+	// @RequestMapping(value = "/getTeamMembers", method = RequestMethod.GET)
+	// @ResponseBody
+	// public List<TeamMember> getAllTeamMemberByBacklog(@RequestParam(value =
+	// "backlogId") int backlogId) {
+	//
+	// return backlogService.
+	// }
 
 }

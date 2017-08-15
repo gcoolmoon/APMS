@@ -37,7 +37,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Worklog/${task.id}">${task.title}</a>
+											<a href="/WorkLog/${backlog.id}">${task.title}</a>
 										</h4>
 										<p>${task.description}</p>
 										<p>
@@ -79,7 +79,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Worklog/${task.id}">${task.title}</a>
+											<a href="/WorkLog/${task.id}">${task.title}</a>
 										</h4>
 										<p>${task.description}</p>
 										<p>
@@ -121,7 +121,7 @@
 								<div class="col-md-4">
 									<div class="well">
 										<h4 class="media-heading">
-											<a href="/Worklog/${task.id}">${task.title}</a>
+											<a href="/WorkLog/${task.id}">${task.title}</a>
 										</h4>
 										<p>${task.description}</p>
 										<p>

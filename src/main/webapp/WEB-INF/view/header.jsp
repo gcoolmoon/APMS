@@ -59,7 +59,7 @@
 				      </ul>
 				      <ul class="list-unstyled">
 				        <li><a href="#" class="green-txt">Users Management</a></li>
-				        <li><a href="#" class="green-txt">Teams Management</a></li>
+				        <li><a href="/team" class="green-txt">Teams Management</a></li>
 				        <li><a href="/projects/manage" class="green-txt">Projects Management</a></li>
 				      </ul>
 				    </div>
