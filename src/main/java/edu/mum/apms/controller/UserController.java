@@ -65,7 +65,12 @@ public class UserController {
 		
 		return "redirect:/users";
 	}
-	
+	 @RequestMapping(value="/user/edit/{id}", method = RequestMethod.GET)
+	    public String editUserPopulate(@PathVariable("id") int id, Model model){
+	        model.addAttribute("user", this.userService.get(id));
+	        model.addAttribute("listUsers", this.userService.getAll());
+	        return "user";
+	    }
 	@RequestMapping("/user/remove/{id}")
     public String removeUser(@PathVariable("id") int id){
         this.userService.delete(id);//.deleteUserByEmpId(this.userService.get(id));
@@ -74,9 +79,7 @@ public class UserController {
  
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
     public String editUser(@PathVariable("id") int id, Model model){
-        model.addAttribute("sprint", this.userService.get(id));
-        model.addAttribute("listUsers", this.userService.getAll());
-        return "sprint";
+    	    return addUser(this.userService.get(id));
     }
 	
 
