@@ -95,17 +95,19 @@ nav, .search-form input, .search-form button, .green-btn {
 .manage-projects table{	
     min-width: 80%;
 }
-#viewFeaturesModal .modal-header {
+.modal-header {
     padding: 0 15px;
 }
-#viewFeaturesModal .modal-body {
-    padding: 0 20px;
+.modal-body {
+    padding: 8px 20px;
 }
-#viewFeaturesModal .modal-content{
+.modal-content{
     color: #fff;
     background-color: #222;
+    box-shadow: none;
+    border: none;
 }
-#viewFeaturesModal .modal-dialog{
+.modal-dialog{
 	background: none;
 }
 #viewFeaturesModal li p{

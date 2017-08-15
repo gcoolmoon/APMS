@@ -3,12 +3,13 @@
 <%@ include file = "../header.jsp" %>
 <div class="row no-margin new-project">	
 	<div class="row">
-		<h2 class="main-title">Edit Your Project</h2>
+		<h2 class="main-title">Edit Your Project <small class="green-txt">: ${project.name}</small></h2>
 	</div>	
 	<div class="row space-lg">
 		<div class="col-sm-8 col-sm-offset-1">
-			<form:form class="form-horizontal" method="POST" action="/projects/new" modelAttribute="project">
-			  <div class="form-group">
+			<form:form class="form-horizontal" method="POST" action="/projects/edit" modelAttribute="project">
+			   <form:input type="hidden" value="${project.projectId}" path="projectId" />
+			   <div class="form-group">
 			    <form:label class="control-label col-sm-2" path="name">Project Name:</form:label>
 			    <div class="col-sm-10">
 			      <form:input type="text" class="form-control" path="name" placeholder="Enter project name" required="required" value="${project.name}" />

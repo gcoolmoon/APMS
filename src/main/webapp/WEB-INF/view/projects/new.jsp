@@ -36,6 +36,7 @@
 			  </div>
 			  <div class="form-group space-lg"> 
 			  	<div class="text-center">
+			      <a href="/projects/manage" class="btn btn-default green-btn">BACK</a>
 			      <button type="submit" class="btn btn-default green-btn">DONE</button>
 			  	</div>
 			  </div>

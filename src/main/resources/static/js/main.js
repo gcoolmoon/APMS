@@ -1,7 +1,13 @@
 $(document).ready(function() {
 	
-	$('#deleteProject').click(function(e){
+	$('.deleteProject').click(function(e){
 		let answer = confirm("Are you sure you want to remove this project?");
+		if (!answer){
+			e.preventDefault();
+		}
+	});
+	$('#deleteFeatureFromProject').click(function(e){
+		let answer = confirm("Are you sure you want to remove this feature?");
 		if (!answer){
 			e.preventDefault();
 		}
@@ -224,8 +230,9 @@ $(document).ready(function() {
 			});
 				
 			
-			$("#backlogTitOption").change(function() {
-				$('#addBacklogForm').attr('action','/addBacklog/'+ $(this).find('option:selected').val());
+			$("#taskTitOption").change(function() {			
+				
+				$('#addWorklogForm').attr('action','/addWorklog/'+ $(this).find('option:selected').val());
 			});
 
 			

@@ -58,6 +58,8 @@ public class TaskServiceImpl implements TaskService {
 	public List<Task> getAllTaskByBacklog(Backlog backlog) {
 		// TODO Auto-generated method stub
 		return taskDao.findByBacklog(backlog);		
+
 	}
+
 
 }
