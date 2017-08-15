@@ -27,7 +27,7 @@ public class UserController {
 	@RequestMapping("/user")
 	public String setUpForm() {
 		//model.addAttribute("sprint", new Sprint());
-		return "/user";
+		return "user";
 	}
 	
 //	@RequestMapping("/projects")
@@ -38,15 +38,15 @@ public class UserController {
 //	}
 	
 	//review users
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String listUsers(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("roles", this.userRoleService.getAll());
 		model.addAttribute("listUsers", this.userService.getAll());
-		return "user";
+		return "register";
 	}
 	
-	@RequestMapping(value = "/users", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUsers(@ModelAttribute("user") User p) {
 		return addUser(p);
 	}
@@ -63,7 +63,7 @@ public class UserController {
 			this.userService.edit(p);
 		}
 		
-		return "redirect:/users";
+		return "redirect:/register";
 	}
 	
 	@RequestMapping("/user/remove/{id}")

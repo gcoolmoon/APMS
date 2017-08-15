@@ -17,7 +17,7 @@ public class Project {
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
-	@OneToMany(mappedBy = "project")
+	@OneToMany(mappedBy = "project",cascade = CascadeType.REMOVE)
 	private List<Feature> features;
 	
 	public Project() {}

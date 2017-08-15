@@ -53,11 +53,4 @@ public class TaskServiceImpl implements TaskService {
 	public void deleteTask(int taskId) {
 		taskDao.delete(taskId);
 	}
-
-	@Override
-	public List<Task> getAllTaskByBacklog(Backlog backlog) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

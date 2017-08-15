@@ -17,6 +17,10 @@ nav, .search-form input, .search-form button, .green-btn {
 .mainmenu-area nav>div, .green-btn{
     background-color: #1abc9c;
 }
+.red-btn{
+	background-color: #dc3545;
+	color: #fff;
+}
 .navbar-default .navbar-nav>li>a:hover, .search-form button i,.nav-tabs>li>a, .green-txt{
 	color: #1abc9c;
 }
@@ -153,7 +157,16 @@ nav, .search-form input, .search-form button, .green-btn {
 	left: 0; 
 	width: 100%;
 }
-
+.register-form{
+    position: absolute;
+    width: 46%;
+    background-color: rgba(0,0,0,0.9);
+    top: 20%;
+    left: 27%;
+}
+label{
+	color: #ccc !important;
+}
 
 
 

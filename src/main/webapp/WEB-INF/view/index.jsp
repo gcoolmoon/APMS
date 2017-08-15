@@ -23,7 +23,7 @@
 			      <strong><a class="navbar-brand" href="#">APMS</a></strong>
 			    </div>
 			    <ul class="nav navbar-nav pull-right">
-		            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Sign Up</a></li>
+		            <li><a href="/register"><span class="glyphicon glyphicon-log-out"></span> Sign Up</a></li>
 			    </ul>
 			  </div>
 			</nav>
@@ -33,21 +33,21 @@
 			<div>
 				<h3 class="main-title green-txt"><small class="glyphicon glyphicon-lock"></small>Login Here</h3>
 			</div>			
-			<form:form class="form-horizontal" method="POST" action="#">
+			<form:form class="form-horizontal" method="POST" action="/authenticate" modelAttribute="user">
 				<div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-            </div>
-            <div class="form-group">
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-default green-btn btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-            </div>
+	              <form:label path="email"><span class="glyphicon glyphicon-user"></span> Username</form:label>
+	              <form:input type="email" class="form-control" path="email" required="required" placeholder="Enter email" />
+	            </div>
+	            <div class="form-group">
+	              <form:label path="password"><span class="glyphicon glyphicon-eye-open"></span> Password</form:label>
+	              <form:input type="password" class="form-control" path="password" placeholder="Enter password" />
+	            </div>
+	            <div class="form-group">
+	            <div class="checkbox">
+	              <label><input type="checkbox" value="" checked>Remember me</label>
+	            </div>
+	            <button type="submit" class="btn btn-default green-btn btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+	            </div>
 			</form:form>
 		</div>
 		<div class="bottom-style"></div>

@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean checkPassword(int userId, String pass) {
-		// TODO Auto-generated method stub
 		return pass.equals(get(userId).getPassword());
 	}
 	
