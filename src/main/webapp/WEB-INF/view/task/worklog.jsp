@@ -1,8 +1,8 @@
-<%
+<%-- <%
 	if (request.getSession().getAttribute("user") == null) {
 		response.sendRedirect("/");
 	}
-%>
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -78,6 +78,7 @@
 	<!-- Add Worklog Section -Start-->
 	<div class="row">
 		<form class="form-horizontal" id="addWorklogForm" method="post">
+		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 			<div class="modal fade" id="addWorklog" role="dialog">
 				<div class="modal-dialog">
 
@@ -155,6 +156,7 @@
 				</div>
 
 				<form id="updWorklogForm" action="/updateWorklog/" method="post">
+				<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<div class="modal-body">
 						<p id="wlTitle">WorkLog Title</p>
 						<hr />
@@ -189,6 +191,7 @@
 
 	<!-- Delete Worklog Section START -->
 	<form id="delWorklogForm" action="/deleteWorklog/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="delWorklog" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
