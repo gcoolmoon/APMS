@@ -11,17 +11,4 @@ public interface BacklogDao extends JpaRepository<Backlog, Integer> {
 
 	public List<Backlog> findByFeature(Feature feature);
 
-	// public Backlog get(int backlogId);
-	//
-	// public List<Backlog> getAll();
-	//
-	// public List<Backlog> getAllByProject(int projectId);
-	//
-	// public List<Backlog> getAllActiveByProject(int projectId);
-	//
-	// public void add(Backlog backlog);
-	//
-	// public void edit(Backlog backlog);
-	//
-	// public void delete(int backlogId);
 }

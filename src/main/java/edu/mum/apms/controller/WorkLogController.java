@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Task;
 import edu.mum.apms.model.WorkLog;
 import edu.mum.apms.service.BacklogService;
@@ -61,10 +60,6 @@ public class WorkLogController {
 			@PathVariable int taskId) {
 
 		worklog.setTask(taskService.getTaskById(taskId));
-
-		// String pattern = "dd-MM-yyyy";
-		// String dateInString =new SimpleDateFormat(pattern).format(new
-		// Date());
 
 		worklog.setLoggedDate(new Date());
 

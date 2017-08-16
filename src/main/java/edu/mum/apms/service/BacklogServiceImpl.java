@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import edu.mum.apms.dao.BacklogDao;
 import edu.mum.apms.dao.FeatureDao;
 import edu.mum.apms.dao.ProjectDao;
+import edu.mum.apms.dao.TeamMemberDao;
 import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Feature;
+import edu.mum.apms.model.TeamMember;
 
 @Service
 public class BacklogServiceImpl implements BacklogService{
@@ -25,6 +27,9 @@ public class BacklogServiceImpl implements BacklogService{
 	
 	@Autowired
 	private ProjectDao projectDao;
+	
+	@Autowired
+	private TeamMemberDao teamDao;
 	
 	@Override
 	@Transactional
@@ -72,19 +77,27 @@ public class BacklogServiceImpl implements BacklogService{
 	}
 
 	@Override
+	@Transactional
 	public List<Feature> getAddableFeatures(int projectId) {
 		
-		//return featureDao.findEmptyBacklogsById(projectId);		
+		return featureDao.findEmptyBacklogsById(projectId);		
 
-		List<Feature> features = featureDao.findByProject(projectDao.findOne(projectId));
-		List<Feature> featureList = new ArrayList<Feature>();
-		
-		for(Feature feature: features){
-			if(feature.getBacklog()==null){
-				featureList.add(feature);
-			}
-		}
-		return featureList;
+//		List<Feature> features = featureDao.findByProject(projectDao.findOne(projectId));
+//		List<Feature> featureList = new ArrayList<Feature>();
+//		
+//		for(Feature feature: features){
+//			if(feature.getBacklog()==null){
+//				featureList.add(feature);
+//			}
+//		}
+//		return featureList;
+	}
+
+	@Override
+	@Transactional
+	public List<TeamMember> getTeamMemberByBacklogId(int backlogId) {
+		// TODO Auto-generated method stub
+		return teamDao.getTeamByBacklogId(backlogId);
 	}
 
 }

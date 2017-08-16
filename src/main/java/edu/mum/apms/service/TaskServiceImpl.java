@@ -16,23 +16,23 @@ public class TaskServiceImpl implements TaskService {
 
 	@Autowired
 	private TaskDao taskDao;
-	
+
 	@Override
 	@Transactional
 	public Task getTaskById(int taskId) {
 		return taskDao.findOne(taskId);
 	}
 
-//	@Override
-//	@Transactional
-//	public List<Task> getAllTaskByBacklog(Backlog backlog) {		
-//		return taskDao.findByBacklog(backlog);		
-//	}
+	@Override
+	@Transactional
+	public List<Task> getAllTaskByBacklog(Backlog backlog) {
+		return taskDao.findByBacklog(backlog);
+	}
 
 	@Override
 	@Transactional
 	public List<Task> getAllActiveTaskByBacklog(int backlogId) {
-		//return taskDao.getAllActiveByBacklog(backlogId);
+		// return taskDao.getAllActiveByBacklog(backlogId);
 		return null;
 	}
 
@@ -53,13 +53,5 @@ public class TaskServiceImpl implements TaskService {
 	public void deleteTask(int taskId) {
 		taskDao.delete(taskId);
 	}
-
-	@Override
-	public List<Task> getAllTaskByBacklog(Backlog backlog) {
-		// TODO Auto-generated method stub
-		return taskDao.findByBacklog(backlog);		
-
-	}
-
 
 }

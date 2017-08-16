@@ -1,3 +1,8 @@
+<%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -14,18 +19,20 @@
 						data-toggle="tab">Open</a></li>
 					<li><a href="#tab2default" data-toggle="tab">In Progess</a></li>
 					<li><a href="#tab3default" data-toggle="tab">Done</a></li>
-					<h4 class="boardTitle">Showing Task Board for Backlog <strong>${backlog.feature.title}</strong></h4>
+					<h4 class="boardTitle">
+						Showing Task Board for Backlog <strong>${backlog.feature.title}</strong> 
+						
+						<a href="/Backlog/${backlog.id}" style="float:right">Goto Backlog</a>
+					</h4>
 				</ul>
 			</div>
 			<div class="panel-body">
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="tab1default">
 						<input type="hidden" value="${backlog.id}" id="task_id" />
-						
+
 						<div>
-							<a								
-								href="#addTask"
-								data-toggle="modal"
+							<a href="#addTask" data-toggle="modal"
 								class="btn btn-default-btn-xs btn-success addNewTask"
 								data-backlogId="${backlog.id}"><i
 								class="glyphicon glyphicon-plus"></i>New</a>
@@ -41,26 +48,32 @@
 										</h4>
 										<p>${task.description}</p>
 										<p>
-											<a href="#">Team member</a>
+											<a href="#" data-toggle="tooltip" data-placement="top" title="Assignee">${task.teamMember.user.firstName} ${task.teamMember.user.lastName} </a>
 										</p>
-										<ul class="list-inline list-unstyled">											
+										<ul class="list-inline list-unstyled">
 											<span data-toggle="tooltip" data-placement="top"
 												title="Hour Logged"><i
-												class="glyphicon glyphicon glyphicon-time"></i><%-- ${task.workLog.hourLogged} --%>|</span>
+												class="glyphicon glyphicon glyphicon-time"></i> <c:set
+													var="total" value="${0}" /> <c:forEach var="worklog"
+													items="${task.workLog}">
+													<c:set var="total" value="${total + worklog.hourLogged}" />
+												</c:forEach> ${total}H |</span>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Status"> <i
 												class="glyphicon glyphicon-eye-open"></i>${task.status}
 											</span>
 										</ul>
 										<p>
-											<a data-toggle="modal" href="#updateTask"
-												class="updTask" name="${task.id}"
-												data-backlogid="${backlog.id}">Update |</a>
 
-											<span data-toggle="tooltip" data-placement="top"
+											<a data-toggle="modal" href="#assignMember"
+												class="assignTask" name="${task.id}"
+												data-backlogid="${backlog.id}">Assign |</a> <a
+												data-toggle="modal" href="#updateTask" class="updTask"
+												name="${task.id}" data-backlogid="${backlog.id}">Update
+												|</a> <span data-toggle="tooltip" data-placement="top"
 												title="delete"> <a data-toggle="modal"
-												class="delTask" name="${task.id}"
-												href="#deleteTask"> Delete</a></span>
+												class="delTask" name="${task.id}" href="#deleteTask">
+													Delete</a></span>
 										</p>
 
 									</div>
@@ -83,26 +96,31 @@
 										</h4>
 										<p>${task.description}</p>
 										<p>
-											<a href="#">Team member</a>
+											<a href="#" data-toggle="tooltip" data-placement="top" title="Assignee">${task.teamMember.user.firstName} ${task.teamMember.user.lastName} </a>
 										</p>
-										<ul class="list-inline list-unstyled">											
+										<ul class="list-inline list-unstyled">
 											<span data-toggle="tooltip" data-placement="top"
 												title="Hour Logged"><i
-												class="glyphicon glyphicon glyphicon-time"></i><%-- ${task.workLog.hourLogged} --%>|</span>
+												class="glyphicon glyphicon glyphicon-time"></i> <c:set
+													var="total" value="${0}" /> <c:forEach var="worklog"
+													items="${task.workLog}">
+													<c:set var="total" value="${total + worklog.hourLogged}" />
+												</c:forEach> ${total}H |</span>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Status"> <i
 												class="glyphicon glyphicon-eye-open"></i>${task.status}
 											</span>
 										</ul>
 										<p>
-											<a data-toggle="modal" href="#updateTask"
-												class="updTask" name="${task.id}"
-												data-backlogid="${backlog.id}">Update |</a>
-
-											<span data-toggle="tooltip" data-placement="top"
+											<a data-toggle="modal" href="#assignMember"
+												class="assignTask" name="${task.id}"
+												data-backlogid="${backlog.id}">Assign |</a> <a
+												data-toggle="modal" href="#updateTask" class="updTask"
+												name="${task.id}" data-backlogid="${backlog.id}">Update
+												|</a> <span data-toggle="tooltip" data-placement="top"
 												title="delete"> <a data-toggle="modal"
-												class="delTask" name="${task.id}"
-												href="#deleteTask"> Delete</a></span>
+												class="delTask" name="${task.id}" href="#deleteTask">
+													Delete</a></span>
 										</p>
 
 									</div>
@@ -125,27 +143,31 @@
 										</h4>
 										<p>${task.description}</p>
 										<p>
-											<a href="#">Team member</a>
+											<a href="#" data-toggle="tooltip" data-placement="top" title="Assignee">${task.teamMember.user.firstName} ${task.teamMember.user.lastName} </a>
 										</p>
 										<ul class="list-inline list-unstyled">
-											
 											<span data-toggle="tooltip" data-placement="top"
 												title="Hour Logged"><i
-												class="glyphicon glyphicon glyphicon-time"></i><%-- ${task.workLog.hourLogged} --%>|</span>
+												class="glyphicon glyphicon glyphicon-time"></i> <c:set
+													var="total" value="${0}" /> <c:forEach var="worklog"
+													items="${task.workLog}">
+													<c:set var="total" value="${total + worklog.hourLogged}" />
+												</c:forEach> ${total}H |</span>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Status"> <i
 												class="glyphicon glyphicon-eye-open"></i>${task.status}
 											</span>
 										</ul>
 										<p>
-											<a data-toggle="modal" href="#updateTask"
-												class="updTask" name="${task.id}"
-												data-backlogid="${backlog.id}">Update |</a>
-
-											<span data-toggle="tooltip" data-placement="top"
+											<a data-toggle="modal" href="#assignMember"
+												class="assignTask" name="${task.id}"
+												data-backlogid="${backlog.id}">Assign |</a> <a
+												data-toggle="modal" href="#updateTask" class="updTask"
+												name="${task.id}" data-backlogid="${backlog.id}">Update
+												|</a> <span data-toggle="tooltip" data-placement="top"
 												title="delete"> <a data-toggle="modal"
-												class="delTask" name="${task.id}"
-												href="#deleteTask"> Delete</a></span>
+												class="delTask" name="${task.id}" href="#deleteTask">
+													Delete</a></span>
 										</p>
 
 									</div>
@@ -165,7 +187,8 @@
 
 	<!-- Add Task Section -Start-->
 	<div class="row">
-		<form class="form-horizontal" id="addTaskForm" action="/addTask/${backlog.id}" method="post">
+		<form class="form-horizontal" id="addTaskForm"
+			action="/addTask/${backlog.id}" method="post">
 			<div class="modal fade" id="addTask" role="dialog">
 				<div class="modal-dialog">
 
@@ -173,7 +196,9 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Add Task for Backlog: <strong>${backlog.feature.title}</strong></h4>
+							<h4 class="modal-title">
+								Add Task for Backlog: <strong>${backlog.feature.title}</strong>
+							</h4>
 						</div>
 
 						<div class="modal-body">
@@ -182,18 +207,19 @@
 									<label for="taskTitle"
 										class="control-label col-md-2  requiredField">Title<span
 										class="asteriskField">*</span>
-									</label>		
+									</label>
 									<div class="controls col-md-8 ">
 										<input class="input-md  textinput textInput form-control"
 											id="taskTitle" maxlength="30" name="title"
 											placeholder="Add Title" style="margin-bottom: 10px"
 											type="text" />
-									</div>							
+									</div>
 								</div>
-								
+
 								<div class="form-group required">
 									<label for="taskDescription"
-										class="control-label col-md-2  requiredField">Task Description<span class="asteriskField">*</span>
+										class="control-label col-md-2  requiredField">Task
+										Description<span class="asteriskField">*</span>
 									</label>
 									<div class="controls col-md-8 ">
 										<input class="input-md  textinput textInput form-control"
@@ -201,10 +227,10 @@
 											placeholder="Add Description" style="margin-bottom: 10px"
 											type="text" />
 									</div>
-								</div>								
+								</div>
 							</div>
 						</div>
-						
+
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
@@ -225,16 +251,16 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 id="backlogTitle" class="modal-title">Update Task
-						</h4>
+					<h4 id="backlogTitle" class="modal-title">Update Task</h4>
 				</div>
 
 				<form id="updTaskForm" action="/updateTask/" method="post">
 					<div class="modal-body">
 						<p id="taskTitle1">Task Title</p>
-						<input type="hidden" id="tskTitle" name="title" value=""/>						
+						<input type="hidden" id="tskTitle" name="title" value="" />
+						<input type="hidden" id="tmIdval" name="teamMember" value="" />
 						<hr />
-						
+
 						<input id="taskIdVal" type="hidden" name="taskId" value="" />
 						<div class="row">
 
@@ -291,6 +317,47 @@
 		</div>
 	</form>
 	<!-- END Delete Task Section -->
+
+	<!-- Assign Task Section START -->
+	<form id="assignTaskForm" action="/assignTask/" method="post">
+		<div class="modal fade" id="assignMember" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
+						<h3>Assign Task</h3>
+					</div>
+					<div class="modal-body">
+
+						<label for="backlogTitle"
+							class="control-label col-md-2  requiredField">Select
+							Assignee<span class="asteriskField">*</span>
+						</label>
+
+						<div class="controls col-md-8" id="assigneeListDiv">
+
+							<select class="form-control" id="assignMemberOption">
+								<c:forEach var="team" items="${teams}">
+									<option class="teamMemberId" value="${team.id}">${team.user.firstName}
+										${team.user.lastName}</option>
+								</c:forEach>
+							</select>
+
+						</div>
+						<br />
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-success">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<!-- END Assign Task Section -->
 
 </div>
 

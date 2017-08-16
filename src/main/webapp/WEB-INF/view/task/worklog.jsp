@@ -1,3 +1,8 @@
+<%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -10,6 +15,7 @@
 			<div class="col-md-12">
 				<h4>
 					Work Logged for backlog <strong> ${backlog.feature.title}</strong>
+					<a href="/Task/${backlog.id}" style="float:right">Goto Task</a>
 				</h4>
 				<div>
 					<input type="hidden" value="${backlog.id}" id="backlogId" /> <a
@@ -24,6 +30,7 @@
 
 						<thead>
 							<th>DATE</th>
+							<th>Logged By</th>
 							<th>WORKED ON</th>
 							<th>DESCRIPTION</th>
 							<th>HOUR LOGGED</th>
@@ -34,6 +41,7 @@
 								<c:forEach var="worklog" items="${task.getWorkLog()}">
 									<tr>
 										<td>${worklog.loggedDate}</td>
+										<td>${worklog.teamMember.user.firstName} ${worklog.teamMember.user.lastName}
 										<td>${task.title}</td>
 										<td>${worklog.description}</td>
 										<td>${worklog.hourLogged }</td>
