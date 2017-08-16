@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         String accessDeniedMsg = "Access Denied!";
         
         http.authorizeRequests()
-		.antMatchers("/", "/resources/**", "/register","/authenticate","/projects","/projects/**","/**")
+		.antMatchers("/", "/resources/**", "/register","/authenticate","/projects/**","/**","/projects")//
 		.permitAll()
     	//.antMatchers("/projects").hasRole("SCRUMMASTER")
 		.anyRequest()
@@ -89,7 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 		
 		http
         .authorizeRequests()
-        	.antMatchers("/projects/manage").hasAnyRole("ANONYMOUS","ROLE_ANONYMOUS")
+        	.antMatchers("/projects/manage").hasAnyRole("ANONYMOUS","ROLE_SCRUMMASTER")
 //    		.antMatchers("/authenticate").access("hasRole('ROLE_SCRUMMASTER')")
 //    		.antMatchers("/order/all*").access("hasRole('ROLE_ADMIN')")
 //    		.antMatchers("/person/all").access("hasRole('ROLE_ADMIN')")
