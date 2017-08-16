@@ -21,6 +21,7 @@ import edu.mum.apms.model.TeamMember;
 import edu.mum.apms.service.BacklogService;
 import edu.mum.apms.service.FeatureService;
 import edu.mum.apms.service.ProjectService;
+import edu.mum.apms.service.UserService;
 
 @Controller
 public class BacklogController {
@@ -44,15 +45,6 @@ public class BacklogController {
 		request.getSession().setAttribute("projectId", id);
 		return "/backlog/backlog";
 	}
-
-	// @RequestMapping(value = "/addBacklog/{id}", method = RequestMethod.GET)
-	// public String addBacklog(HttpServletRequest request, Model model,
-	// @PathVariable int id) {
-	// model.addAttribute("features", backlogService.getAddableFeatures(id));
-	// model.addAttribute("project", projectService.get(id));
-	// request.getSession().setAttribute("projectId", id);
-	// return "/backlog/addBacklog";
-	// }
 
 	@RequestMapping(value = "/addBacklog/{featureId}", method = RequestMethod.POST)
 	public String addNewBacklog(HttpServletRequest request, @ModelAttribute("backlog") Backlog backlog,
@@ -107,12 +99,11 @@ public class BacklogController {
 	}
 
 	// Ajax call, to get All Team Members
-	// @RequestMapping(value = "/getTeamMembers", method = RequestMethod.GET)
-	// @ResponseBody
-	// public List<TeamMember> getAllTeamMemberByBacklog(@RequestParam(value =
-	// "backlogId") int backlogId) {
-	//
-	// return backlogService.
-	// }
+	@RequestMapping(value = "/getTeamMembers", method = RequestMethod.GET)
+	@ResponseBody
+	public List<TeamMember> getAllTeamMemberByBacklog(@RequestParam(value = "backlogId") int backlogId) {
+
+		return backlogService.getTeamMemberByBacklogId(backlogId);
+	}
 
 }

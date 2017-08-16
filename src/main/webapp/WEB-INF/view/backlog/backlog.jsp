@@ -1,3 +1,8 @@
+<%-- <%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -40,8 +45,10 @@
 
 										<div>
 											<p>
-												<a href="#teamMember" data-toggle="modal" class="viewTeam"
-													name="${backlog.id}">Team Members</a>
+												<a name="${backlog.id}" data-toggle="modal"
+													href="#teamMember" class="viewTeams" name="${backlog.id}">Team
+													Members</a>
+
 											</p>
 										</div>
 
@@ -49,14 +56,25 @@
 											<li data-toggle="tooltip" data-placement="top"
 												title="Hour Estimated"><span><i
 													class="glyphicon glyphicon-time"></i>
-													${backlog.hourEstimated}|</span></li>
+													${backlog.hourEstimated} H | </span></li>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Priority"><i
-												class="glyphicon glyphicon glyphicon-pushpin"></i>${backlog.feature.priority}|</span>
+												class="glyphicon glyphicon glyphicon-pushpin"></i>${backlog.feature.priority}
+												| </span>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Status"> <i
-												class="glyphicon glyphicon-eye-open"></i>${backlog.status}
+												class="glyphicon glyphicon-eye-open"></i>${backlog.status} |
 											</span>
+											<li data-toggle="tooltip" data-placement="top"
+												title="Hour Spent"><span><i
+													class="glyphicon glyphicon-time"></i> <c:set
+														var="totalhourspent" value="${0}" /> <c:forEach
+														var="task" items="${backlog.taskList}">
+														<c:forEach var="worklog" items="${task.workLog}">
+															<c:set var="totalhourspent"
+																value="${totalhourspent + worklog.hourLogged}" />
+														</c:forEach>
+													</c:forEach> ${totalhourspent} </span></li>
 
 										</ul>
 										<p>
@@ -98,7 +116,7 @@
 										<p>${backlog.feature.description}</p>
 										<div>
 											<p>
-												<a href="#teamMember" data-toggle="modal" class="viewTeam"
+												<a data-toggle="modal" href="#teamMember" class="viewTeams"
 													name="${backlog.id}">Team Members</a>
 											</p>
 										</div>
@@ -106,14 +124,26 @@
 											<li data-toggle="tooltip" data-placement="top"
 												title="Hour Estimated"><span><i
 													class="glyphicon glyphicon-time"></i>
-													${backlog.hourEstimated}|</span></li>
+													${backlog.hourEstimated} H | </span></li>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Priority"><i
-												class="glyphicon glyphicon glyphicon-pushpin"></i>${backlog.feature.priority}|</span>
+												class="glyphicon glyphicon glyphicon-pushpin"></i>${backlog.feature.priority}
+												| </span>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Status"> <i
-												class="glyphicon glyphicon-eye-open"></i>${backlog.status}
+												class="glyphicon glyphicon-eye-open"></i>${backlog.status} |
 											</span>
+											<li data-toggle="tooltip" data-placement="top"
+												title="Hour Spent"><span><i
+													class="glyphicon glyphicon-time"></i> <c:set
+														var="totalhourspent" value="${0}" /> <c:forEach
+														var="task" items="${backlog.taskList}">
+														<c:forEach var="worklog" items="${task.workLog}">
+															<c:set var="totalhourspent"
+																value="${totalhourspent + worklog.hourLogged}" />
+														</c:forEach>
+													</c:forEach> ${totalhourspent} </span></li>
+
 										</ul>
 										<p>
 											<a data-toggle="modal" href="#updateBacklog"
@@ -153,7 +183,7 @@
 										<p>${backlog.feature.description}</p>
 										<div>
 											<p>
-												<a href="#teamMember" data-toggle="modal" class="viewTeam"
+												<a data-toggle="modal" href="#teamMember" class="viewTeams"
 													name="${backlog.id}">Team Members</a>
 											</p>
 										</div>
@@ -161,14 +191,26 @@
 											<li data-toggle="tooltip" data-placement="top"
 												title="Hour Estimated"><span><i
 													class="glyphicon glyphicon-time"></i>
-													${backlog.hourEstimated}|</span></li>
+													${backlog.hourEstimated} H | </span></li>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Priority"><i
-												class="glyphicon glyphicon glyphicon-pushpin"></i>${backlog.feature.priority}|</span>
+												class="glyphicon glyphicon glyphicon-pushpin"></i>${backlog.feature.priority}
+												| </span>
 											<span data-toggle="tooltip" data-placement="top"
 												title="Status"> <i
-												class="glyphicon glyphicon-eye-open"></i>${backlog.status}
+												class="glyphicon glyphicon-eye-open"></i>${backlog.status} |
 											</span>
+											<li data-toggle="tooltip" data-placement="top"
+												title="Hour Spent"><span><i
+													class="glyphicon glyphicon-time"></i> <c:set
+														var="totalhourspent" value="${0}" /> <c:forEach
+														var="task" items="${backlog.taskList}">
+														<c:forEach var="worklog" items="${task.workLog}">
+															<c:set var="totalhourspent"
+																value="${totalhourspent + worklog.hourLogged}" />
+														</c:forEach>
+													</c:forEach> ${totalhourspent} </span></li>
+
 										</ul>
 										<p>
 											<a data-toggle="modal" href="#updateBacklog"
@@ -205,6 +247,7 @@
 	<!-- Add Backlog Section -Start-->
 	<div class="row">
 		<form class="form-horizontal" id="addBacklogForm" method="post">
+		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 			<div class="modal fade" id="addBacklog" role="dialog">
 				<div class="modal-dialog">
 
@@ -270,6 +313,7 @@
 				</div>
 
 				<form id="updBacklogForm" action="/updateBacklog/" method="post">
+				<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<div class="modal-body">
 						<p id="featureDescription">Backlog Description</p>
 						<hr />
@@ -312,6 +356,7 @@
 
 	<!-- Delete Backlog Section START -->
 	<form id="delBacklogForm" action="/deleteBacklog/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="deleteBacklog" role="dialog">
 			<div class="modal-dialog">
 
@@ -348,22 +393,30 @@
 				</div>
 				<div class="modal-body">
 					<table id="tblMember" class="pull-left col-md-8 ">
+						<thead>
+							<tr>
+								<td>Name</td>
+								<td>Role</td>
+							</tr>
+						</thead>
 						<tbody id="memberTbody">
 							<tr>
-								<td class="h6"><strong>Name</strong></td>								
+								<td class="h6"><strong>Name</strong></td>
 								<td class="h5">Dinesh</td>
 							</tr>
 							<tr>
-								<td class="h6"><strong>Position</strong></td>								
+								<td class="h6"><strong>Position</strong></td>
 								<td class="h5">Developer</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<div class="modal-footer"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+				</div>
 			</div>
 		</div>
-		
+
 	</div>
 	<!-- END Team Member Section -->
 

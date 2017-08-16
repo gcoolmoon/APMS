@@ -51,14 +51,14 @@ $(document).ready(function() {
 		});
 	});	
 
-			// Add Backlog
-			$(".addNewBacklog").on('click', function() {
+	// Add Backlog
+	$(".addNewBacklog").on('click', function() {
 					
-				let projectId = $("#project_id").val();
+		let projectId = $("#project_id").val();
 				
-				let data = 'projectId=' + encodeURIComponent(projectId);
+		let data = 'projectId=' + encodeURIComponent(projectId);
 				
-				$.ajax({
+		$.ajax({
 		
 					type : "GET",
 					contentType : "application/json",
@@ -89,9 +89,9 @@ $(document).ready(function() {
 			});
 				
 			
-				$("#backlogTitOption").change(function() {
+			$("#backlogTitOption").change(function() {
 					$('#addBacklogForm').attr('action','/addBacklog/'+ $(this).find('option:selected').val());
-				});
+			});
 						
 	
 			// Open Update Backlog toggle with list of features
@@ -146,7 +146,6 @@ $(document).ready(function() {
 
 			
 			//Update Task
-			// Open Update Backlog toggle with list of features
 			$(".updTask").on('click', function() {
 
 				var taskId = this.name;
@@ -173,7 +172,8 @@ $(document).ready(function() {
 						$("#taskTitle1").text(task.title);
 						$("#tskTitle").val(task.title);
 						$("#taskDescription1").val(task.description);
-						
+						$("#tmIdval").val(task.teamMember);
+												
 					},
 					error : function() {
 						alert("failure");
@@ -181,6 +181,20 @@ $(document).ready(function() {
 				});
 
 			}); //End of Update Task
+			
+			
+			//Assign Task
+			let taskId;
+			$(".assignTask").on('click', function() {
+
+				taskId = this.name;
+				$('#assignTaskForm').attr('action','/assignTeam/'+ taskId + "/" + $("#assignMemberOption option:first").val());
+			
+			});				
+			
+			$("#assignTaskForm").change(function() {				
+				$('#assignTaskForm').attr('action','/assignTeam/'+ taskId + "/" + $(this).find('option:selected').val());
+			});
 			
 			
 			// Delete Task			
@@ -236,7 +250,7 @@ $(document).ready(function() {
 			});
 
 			
-			//Update Worklog
+			
 			// Open Update Worklog toggle with list of features
 			$(".updWorklog").on('click', function() {
 					
@@ -281,12 +295,12 @@ $(document).ready(function() {
 				$('#delWorklogForm').attr('action','/deleteWorklog/' + worklogId);
 				
 			});	
+
 			
-			
-			// Populate Backlog Members
-			/*$(".viewTeam").on('click', function() {
+			// Populate Backlog Team Members
+			$(".viewTeams").on('click', function() {
 					
-				let backlogId = $(this).name;
+				let backlogId = this.name;				
 				
 				let data = 'backlogId=' + encodeURIComponent(backlogId);
 				
@@ -299,19 +313,22 @@ $(document).ready(function() {
 					dataType : 'json',
 		
 					success : function(members) {
+						
 						$('#memberTbody').empty();
 						let tableData = "";
 						$.each(members, function(index, Member) {
 							
 							$("#tblMember").find('tbody')
 						    .append($('<tr>')
-						        .append($('<td>')
-						            
-						                .attr('class', 'h6')
-						                .text(Member.user.firstName)
-						            )
+						        .append($('<td>')	            
+						                
+						                .text(Member.user.firstName + " " + Member.user.lastName)
 						        )
-						    );							
+						        .append($('<td>')	            
+						                
+						                .text(Member.position)
+						        )
+						    )						   					
 
 						});						
 						
@@ -320,18 +337,17 @@ $(document).ready(function() {
 						alert("failure");
 					}
 				});
-			});*/
+			});
 			
 			
 			// Add Team Member
-			$(".addTeam").on('click', function() {
-				alert("cal");
+			$(".addNewTeam").on('click', function() {
+				
 				$.ajax({
 		
 					type : "GET",
 					contentType : "application/json",
-					url : "/getUsers",
-					data : data,
+					url : "/getUsers",					
 					dataType : 'json',
 		
 					success : function(Users) {
@@ -341,13 +357,13 @@ $(document).ready(function() {
 							
 							let optionData = $('<option/>', {						        
 								value: User.id,
-						        text : User.firstName + User.lastName 	
+						        text : User.firstName + ' ' + User.lastName 	
 						        
 						    });	
 							
 							$('#userInfoOption').append(optionData);
 						});
-						$('#addTeamForm').attr('action','/addTeam/'+ users[0].id);
+						$('#addTeamForm').attr('action','/addTeam/'+ Users[0].id);
 						
 					},
 					error : function() {
@@ -361,7 +377,32 @@ $(document).ready(function() {
 				$('#addTeamForm').attr('action','/addTeam/'+ $(this).find('option:selected').val());
 			});
 				
+			
+			// Open Update Team toggle 
+			$(".updTeam").on('click', function() {
+
+				var teamId = this.name;
 				
+				const userId = $(this).data("userid");
+				const position = $(this).data("position");
+				const teamName = $(this).data("teamname");
+				
+				$("#teamName").text(teamName);				
+				$("#teamPosition").val(position);
+				$("#teamId1").val(teamId);
+				
+				$('#updTeamForm').attr('action','/updateTeam/' +userId );
+				
+			});
+			
+			// Delete Member			
+			$(".delTMMember").on('click', function() {
+				
+				const teamId = this.name;
+				$('#delTeamForm').attr('action','/deleteTeam/' + teamId);
+				
+			});	
+			
 			
 			
 	if ($('#addMsg').text() === "")

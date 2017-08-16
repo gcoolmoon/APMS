@@ -18,7 +18,7 @@ public class UserRole {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;	
 
-	@Column(name="ROLE", length=15, unique=true, nullable=false)
+	@Column(name="TYPE", length=15, unique=true, nullable=false)
 	private String role;
 
     @ManyToMany(mappedBy = "userRoles")

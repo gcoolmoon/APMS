@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import edu.mum.apms.model.Backlog;
 import edu.mum.apms.model.Status;
 import edu.mum.apms.model.Task;
 import edu.mum.apms.service.BacklogService;
 import edu.mum.apms.service.TaskService;
+import edu.mum.apms.service.TeamMemberService;
 
 @Controller
 public class TaskController {
@@ -27,12 +27,16 @@ public class TaskController {
 	@Autowired
 	private BacklogService backlogService;
 
+	@Autowired
+	private TeamMemberService teamService;
+
 	// Show Tasks
 	@RequestMapping(value = "/Task/{backlogId}", method = RequestMethod.GET)
 	public String showTask(HttpServletRequest request, Model model, @PathVariable int backlogId) {
 
 		model.addAttribute("tasks", taskService.getAllTaskByBacklog(backlogService.getBacklogById(backlogId)));
 		model.addAttribute("backlog", backlogService.getBacklogById(backlogId));
+		model.addAttribute("teams", teamService.getAllTeamMember());
 
 		request.getSession().setAttribute("backlogId", backlogId);
 
@@ -41,7 +45,7 @@ public class TaskController {
 
 	// Add Task
 	@RequestMapping(value = "/addTask/{backlogId}", method = RequestMethod.POST)
-	public String addNewBacklog(HttpServletRequest request, @ModelAttribute("task") Task task,
+	public String addNewTask(HttpServletRequest request, @ModelAttribute("task") Task task,
 			@PathVariable int backlogId) {
 
 		task.setBacklog(backlogService.getBacklogById(backlogId));
@@ -62,11 +66,29 @@ public class TaskController {
 
 	// Update Task
 	@RequestMapping(value = "/updateTask/{backlogId}/{taskId}", method = RequestMethod.POST)
-	public String updateBacklog(HttpServletRequest request, @ModelAttribute("task") Task task,
-			@PathVariable int backlogId, @PathVariable int taskId) {
+	public String updateTask(HttpServletRequest request, @ModelAttribute("task") Task task, @PathVariable int backlogId,
+			@PathVariable int taskId) {
 
 		task.setId(taskId);
+		task.setTeamMember(taskService.getTaskById(taskId).getTeamMember());
 		task.setBacklog(backlogService.getBacklogById(backlogId));
+
+		taskService.updateTask(task);
+
+		request.getSession().setAttribute("task", task);
+
+		return "redirect:/Task/" + request.getSession().getAttribute("backlogId");
+	}
+
+	// Assign Task
+	@RequestMapping(value = "/assignTeam/{taskId}/{memberId}", method = RequestMethod.POST)
+	public String assingTask(HttpServletRequest request, @ModelAttribute("task") Task task, @PathVariable int taskId,
+			@PathVariable int memberId) {
+
+		task = taskService.getTaskById(taskId);
+
+		task.setTeamMember(teamService.getTeamMemberById(memberId));
+
 		taskService.updateTask(task);
 
 		request.getSession().setAttribute("task", task);
@@ -76,7 +98,7 @@ public class TaskController {
 
 	// Delete Backlog
 	@RequestMapping(value = "/deleteTask/{taskId}", method = RequestMethod.POST)
-	public String deleteBacklog(HttpServletRequest request, @PathVariable int taskId) {
+	public String deleteTask(HttpServletRequest request, @PathVariable int taskId) {
 
 		taskService.deleteTask(taskId);
 
