@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.mum.apms.model.Task;
+import edu.mum.apms.model.User;
 import edu.mum.apms.model.WorkLog;
 import edu.mum.apms.service.BacklogService;
 import edu.mum.apms.service.TaskService;
+import edu.mum.apms.service.TeamMemberService;
 import edu.mum.apms.service.WorklogService;
 
 @Controller
@@ -32,6 +34,9 @@ public class WorkLogController {
 
 	@Autowired
 	private TaskService taskService;
+	
+	@Autowired
+	private TeamMemberService tmService;
 
 	// Show Worklog
 	@RequestMapping(value = "/WorkLog/{backlogId}", method = RequestMethod.GET)
@@ -62,7 +67,10 @@ public class WorkLogController {
 		worklog.setTask(taskService.getTaskById(taskId));
 
 		worklog.setLoggedDate(new Date());
-
+		
+		User user = (User) request.getSession().getAttribute("user");
+		
+		worklog.setTeamMember(tmService.getTeamMemberByUser(user));
 		worklogService.addWorklog(worklog);
 
 		return "redirect:/WorkLog/" + request.getSession().getAttribute("backlogId");

@@ -59,15 +59,7 @@
 														data-target="#delWorklog">
 														<span class="glyphicon glyphicon-trash"></span>
 												</button>
-												<%-- <span data-placement="top" data-toggle="tooltip"
-													title="Delete">
-													<button class=" deleteWorklog btn btn-danger btn-xs"
-														name="${worklog.id}"
-														data-title="Delete" data-toggle="modal"
-														data-target="#delWorklog">
-														<span class="glyphicon glyphicon-trash"></span>
-													</button>
-												</span> --%>
+												
 											</p></td>
 									</tr>
 								</c:forEach>
