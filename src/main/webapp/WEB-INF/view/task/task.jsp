@@ -1,3 +1,8 @@
+<%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -15,7 +20,9 @@
 					<li><a href="#tab2default" data-toggle="tab">In Progess</a></li>
 					<li><a href="#tab3default" data-toggle="tab">Done</a></li>
 					<h4 class="boardTitle">
-						Showing Task Board for Backlog <strong>${backlog.feature.title}</strong>
+						Showing Task Board for Backlog <strong>${backlog.feature.title}</strong> 
+						
+						<a href="/Backlog/${backlog.id}" style="float:right">Goto Backlog</a>
 					</h4>
 				</ul>
 			</div>
