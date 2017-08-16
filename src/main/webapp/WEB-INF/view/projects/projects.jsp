@@ -1,3 +1,8 @@
+<%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%>
 <%@ include file = "../header.jsp" %>
 <div class="row no-margin">		
 	<div class="alert alert-success" id="addAlert">

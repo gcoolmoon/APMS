@@ -1,3 +1,8 @@
+<%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%>
 <%@ include file = "../header.jsp" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="row no-margin manage-projects">	
