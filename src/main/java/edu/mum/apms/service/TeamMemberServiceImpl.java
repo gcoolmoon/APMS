@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.mum.apms.dao.TeamMemberDao;
 import edu.mum.apms.model.TeamMember;
+import edu.mum.apms.model.User;
 
 @Service
 public class TeamMemberServiceImpl implements TeamMemberService {
@@ -50,6 +51,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	public List<TeamMember> getTeamMembersByPosition(String position) {
 		// TODO Auto-generated method stub
 		return teamDao.getTeamByPosition(position);
+	}
+
+	@Override
+	public TeamMember getTeamMemberByUser(User user) {
+		// TODO Auto-generated method stub
+		return teamDao.getTeamMemberByUser(user);
 	}
 
 }
