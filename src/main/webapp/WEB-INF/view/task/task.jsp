@@ -1,8 +1,8 @@
-<%
+<%-- <%
 	if (request.getSession().getAttribute("user") == null) {
 		response.sendRedirect("/");
 	}
-%>
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -189,6 +189,7 @@
 	<div class="row">
 		<form class="form-horizontal" id="addTaskForm"
 			action="/addTask/${backlog.id}" method="post">
+			<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 			<div class="modal fade" id="addTask" role="dialog">
 				<div class="modal-dialog">
 
@@ -256,6 +257,7 @@
 
 				<form id="updTaskForm" action="/updateTask/" method="post">
 					<div class="modal-body">
+					<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 						<p id="taskTitle1">Task Title</p>
 						<input type="hidden" id="tskTitle" name="title" value="" />
 						<input type="hidden" id="tmIdval" name="teamMember" value="" />
@@ -295,6 +297,7 @@
 
 	<!-- Delete Task Section START -->
 	<form id="delTaskForm" action="/deleteTask/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="deleteTask" role="dialog">
 			<div class="modal-dialog">
 
@@ -320,6 +323,7 @@
 
 	<!-- Assign Task Section START -->
 	<form id="assignTaskForm" action="/assignTask/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="assignMember" role="dialog">
 			<div class="modal-dialog">
 
