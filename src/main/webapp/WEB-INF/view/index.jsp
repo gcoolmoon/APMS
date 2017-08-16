@@ -28,6 +28,9 @@
 			  </div>
 			</nav>
 	    </div> <!-- End mainmenu area -->
+		<div class="alert alert-danger login-alert" id="addAlert">
+		  <strong>Error!</strong> <span id="addMsg">${message}</span>
+		</div>
 		<img alt="background" src="/images/login-bg.jpg">
 		<div class="login-form">
 			<div>

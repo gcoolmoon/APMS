@@ -24,7 +24,7 @@
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid clearfix">
 			    <div class="navbar-header logo">
-			      <strong><a class="navbar-brand" href="/projects">APMS</a></strong>
+			      <strong><a class="navbar-brand" href="/">APMS</a></strong>
 			    </div>
 			    <ul class="nav navbar-nav pull-right">
 				    <li>
@@ -39,7 +39,7 @@
 					</li>
 		            <li><a href="/projects"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			      	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-		            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			    </ul>
 			  </div>
 			</nav>

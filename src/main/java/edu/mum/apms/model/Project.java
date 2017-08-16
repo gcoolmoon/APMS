@@ -12,6 +12,9 @@ public class Project {
 	private int projectId;
 	private String name;
 	private String description;
+	@ManyToOne(cascade=CascadeType.MERGE)
+    @JoinColumn(name="user_id")
+	private User createdBy;
 	@Temporal(TemporalType.DATE)
 	@OrderBy
 	private Date startDate;
@@ -37,6 +40,14 @@ public class Project {
 
 	public void setProjectId(int projectId) {
 		this.projectId = projectId;
+	}
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public String getName() {

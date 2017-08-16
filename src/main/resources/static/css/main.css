@@ -167,7 +167,13 @@ nav, .search-form input, .search-form button, .green-btn {
 label{
 	color: #ccc !important;
 }
-
+.login-alert{
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    z-index: 2000;
+    width: 90%;
+}
 
 
 
