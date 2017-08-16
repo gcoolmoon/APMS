@@ -35,7 +35,7 @@
 								<c:forEach var="worklog" items="${task.getWorkLog()}">
 									<tr>
 										<td>${worklog.loggedDate}</td>
-										<td>${worklog.teamMember.firstName} ${worklog.teamMember.lastName}
+										<td>${worklog.teamMember.user.firstName} ${worklog.teamMember.user.lastName}
 										<td>${task.title}</td>
 										<td>${worklog.description}</td>
 										<td>${worklog.hourLogged }</td>
