@@ -25,7 +25,7 @@ public class TeamMember {
 	@OneToMany(mappedBy="teamMember",cascade = CascadeType.REMOVE)
 	private List<Task> tasksAssigned ;
 	
-	@NotEmpty(message = "User can not be empty")
+	//@NotEmpty(message = "User can not be empty")
 	@OneToOne
 	@JoinColumn(name="userId")
 	private User user;

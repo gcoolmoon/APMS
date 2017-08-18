@@ -85,7 +85,7 @@
 				<div class="form-group col-md-12">
 					<label class="col-md-3 control-lable" for="userRoles">Roles</label>
 					<div class="col-md-7">
-					<form:select path="userRoles" multiple="true" >
+					<form:select path="userRoles" multiple="true" class="form-control" >
 					
 <%-- 					  <form:option value=0 label="--- Select ---"/>path="userRoles"  value="${userRoles}" selected="${userRoles}"  --%>
 

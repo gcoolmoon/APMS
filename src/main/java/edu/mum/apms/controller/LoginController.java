@@ -48,7 +48,6 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, Model model) {
 		request.getSession().removeAttribute("user");
-		String msg = "Good Bye!";
-		return "redirect:/"+msg;
+		return "redirect:/";
 	}
 }

@@ -110,7 +110,7 @@
 						<form:select path="userRoles" multiple="true" class="form-control input-sm" >
 						
 	<%-- 					  <form:option value=0 label="--- Select ---"/> --%>
-	  					 <form:options itemValue="id" itemLabel="type" items="${roles}" />
+	  					 <form:options itemValue="id" itemLabel="role" items="${roles}" />
 	<%-- 						<form:select path="userRoles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm" /> --%>
 							</form:select>
 							<div class="has-error">

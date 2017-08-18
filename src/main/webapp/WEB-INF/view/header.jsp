@@ -38,7 +38,7 @@
 					  </form>
 					</li>
 		            <li><a href="/projects"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-			      	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+			      	<li><a href="/userprofile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 		            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			    </ul>
 			  </div>
@@ -58,7 +58,7 @@
 				        <li><a href="#">Components</a></li>
 				      </ul>
 				      <ul class="list-unstyled">
-				        <li><a href="#" class="green-txt">Users Management</a></li>
+				        <li><a href="/users" class="green-txt">Users Management</a></li>
 				        <li><a href="/team" class="green-txt">Teams Management</a></li>
 				        <li><a href="/projects/manage" class="green-txt">Projects Management</a></li>
 				      </ul>
