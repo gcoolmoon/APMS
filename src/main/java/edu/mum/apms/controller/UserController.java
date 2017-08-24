@@ -40,7 +40,7 @@ public class UserController {
 
 	// review users
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public String listUsers(Model model) {
+	public String listUserss(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("roles", this.userRoleService.getAll());
 		model.addAttribute("listUsers", this.userService.getAll());
@@ -82,7 +82,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
-	public String addUsers(@ModelAttribute("user") User p) {
+	public String addUserss(@ModelAttribute("user") User p) {
 		return addUser(p);
 	}
 
