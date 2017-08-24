@@ -32,6 +32,6 @@ public class ReleaseRestController {
 	@RequestMapping("/restsprintbyrelease/{id}")
     public List<Sprint> sprintByRelease(@PathVariable("id") int id) {
 		
-        return releaseService.get(id).getSprint();
+        return releaseService.get(id).getSprint() ;
     }
 }
