@@ -35,8 +35,10 @@ public class UserController {
 	}
 
 	// review users
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String listUsers(Model model) {
+
 		model.addAttribute("user", new User());
 		model.addAttribute("roles", this.userRoleService.getAll());
 		model.addAttribute("listUsers", this.userService.getAll());
@@ -81,8 +83,10 @@ public class UserController {
 		return "userProfile";
 	}
 
+
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addUsers(@ModelAttribute("user") User p) {
+
 		return addUser(p);
 	}
 
