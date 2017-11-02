@@ -20,27 +20,27 @@ public class User {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotEmpty
+	//@NotEmpty
 	@Column(name="Emp_ID", unique=true, nullable=false)
 	private String employeeId;
 	
-	@NotEmpty
+	//@NotEmpty
 	@Column(name="PASSWORD", nullable=false)
 	private String password;
 		
-	@NotEmpty
+	//@NotEmpty
 	@Column(name="FIRST_NAME", nullable=false)
 	private String firstName;
 
-	@NotEmpty
+	//@NotEmpty
 	@Column(name="LAST_NAME", nullable=false)
 	private String lastName;
 
-	@NotEmpty
+	//@NotEmpty
 	@Column(name="EMAIL", nullable=false)
 	private String email;
 
-	@NotEmpty
+	//@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USER_USER_ROLE", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 

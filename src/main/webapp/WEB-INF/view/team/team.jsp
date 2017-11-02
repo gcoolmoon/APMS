@@ -1,3 +1,8 @@
+<%-- <%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -72,6 +77,7 @@
 	<!-- Add Team Section -Start-->
 	<div class="row">
 		<form class="form-horizontal" id="addTeamForm" method="post">
+		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 			<div class="modal fade" id="addTeam" role="dialog">
 				<div class="modal-dialog">
 
@@ -137,6 +143,7 @@
 				</div>
 
 				<form id="updTeamForm" action="/updateTeam/" method="post">
+				<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<div class="modal-body">
 						<p id="teamName">Team Name</p>
 						<hr />
@@ -163,6 +170,7 @@
 
 	<!-- Delete TEAM Section START -->
 	<form id="delTeamForm" action="/deleteTeam/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="delTeam" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">

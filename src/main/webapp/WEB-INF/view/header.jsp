@@ -24,7 +24,7 @@
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid clearfix">
 			    <div class="navbar-header logo">
-			      <strong><a class="navbar-brand" href="#">APMS</a></strong>
+			      <strong><a class="navbar-brand" href="/">APMS</a></strong>
 			    </div>
 			    <ul class="nav navbar-nav pull-right">
 				    <li>
@@ -38,8 +38,8 @@
 					  </form>
 					</li>
 		            <li><a href="/projects"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-			      	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-		            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			      	<li><a href="/userprofile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+		            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			    </ul>
 			  </div>
 			</nav>
@@ -53,12 +53,12 @@
 				      <ul class="nav navbar-nav navbar-left main-nav space-sm-bottom">
 				        <li><a href="/projects">Projects</a></li>
 				        <li><a href="#">Agile Board</a></li>
-				        <li><a href="#">Releases</a></li>
+				        <li><a href="/releases">Releases</a></li>
 				        <li><a href="#">All Issues</a></li>
 				        <li><a href="#">Components</a></li>
 				      </ul>
 				      <ul class="list-unstyled">
-				        <li><a href="#" class="green-txt">Users Management</a></li>
+				        <li><a href="/users" class="green-txt">Users Management</a></li>
 				        <li><a href="/team" class="green-txt">Teams Management</a></li>
 				        <li><a href="/projects/manage" class="green-txt">Projects Management</a></li>
 				      </ul>

@@ -1,3 +1,8 @@
+<%-- <%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -242,6 +247,7 @@
 	<!-- Add Backlog Section -Start-->
 	<div class="row">
 		<form class="form-horizontal" id="addBacklogForm" method="post">
+		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 			<div class="modal fade" id="addBacklog" role="dialog">
 				<div class="modal-dialog">
 
@@ -307,6 +313,7 @@
 				</div>
 
 				<form id="updBacklogForm" action="/updateBacklog/" method="post">
+				<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<div class="modal-body">
 						<p id="featureDescription">Backlog Description</p>
 						<hr />
@@ -349,6 +356,7 @@
 
 	<!-- Delete Backlog Section START -->
 	<form id="delBacklogForm" action="/deleteBacklog/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="deleteBacklog" role="dialog">
 			<div class="modal-dialog">
 

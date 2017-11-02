@@ -20,7 +20,7 @@ public class Feature {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	@OneToOne(mappedBy="feature")
+	@OneToOne(mappedBy="feature",cascade = CascadeType.REMOVE)
 	@JsonBackReference
 	private Backlog backlog;
 	

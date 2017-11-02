@@ -1,4 +1,11 @@
+<%-- <%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%> --%>
 <%@ include file = "../header.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="row no-margin">		
 	<div class="alert alert-success" id="addAlert">
 	  <strong>Success!</strong> <span id="addMsg">${message}</span>
@@ -25,7 +32,10 @@
 						        <span>0.0%<br>completed</span>
 						    </c:when>
 						    <c:otherwise>
-								<span>${c/size}%<br>completed</span>
+								<span>
+								<fmt:formatNumber value="${c/size}" type="number" pattern="0.00" />%
+								<br>completed
+								</span>
 						    </c:otherwise>
 						</c:choose>
 					</div>

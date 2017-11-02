@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -20,14 +22,18 @@ public class Backlog {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotNull(message = "Estimated hour cannot be empty!")
+	@Digits(integer=6, fraction=2, message="Estimated hour format is not valid!")
 	private double hourEstimated;
 	private double hourSpent;
 
+	@NotNull(message = "Feature cannot be empty!")
 	@OneToOne
 	@JoinColumn(name = "featureId")
 	@JsonBackReference
 	private Feature feature;
 
+	@NotNull(message = "Status cannot be empty!")
 	@Enumerated(EnumType.STRING)
 	private Status status;
 

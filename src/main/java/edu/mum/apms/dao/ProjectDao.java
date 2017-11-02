@@ -1,12 +1,12 @@
 package edu.mum.apms.dao;
 
 import edu.mum.apms.model.Project;
+import edu.mum.apms.model.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface ProjectDao extends JpaRepository<Project, Integer>{
-//	public void add(Project project);
-//	public void edit(Project project);
-//	public void delete(int projectId);
-//	public Project findByProjectId(int projectId);
-//	public List<Project> getAll();
+	public List<Project> findByCreatedBy(User user);
 }

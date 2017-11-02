@@ -1,3 +1,8 @@
+<%-- <%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <jsp:include page="../header.jsp" />
@@ -10,6 +15,7 @@
 			<div class="col-md-12">
 				<h4>
 					Work Logged for backlog <strong> ${backlog.feature.title}</strong>
+					<a href="/Task/${backlog.id}" style="float:right">Goto Task</a>
 				</h4>
 				<div>
 					<input type="hidden" value="${backlog.id}" id="backlogId" /> <a
@@ -35,7 +41,7 @@
 								<c:forEach var="worklog" items="${task.getWorkLog()}">
 									<tr>
 										<td>${worklog.loggedDate}</td>
-										<td>${worklog.teamMember.firstName} ${worklog.teamMember.lastName}
+										<td>${worklog.teamMember.user.firstName} ${worklog.teamMember.user.lastName}
 										<td>${task.title}</td>
 										<td>${worklog.description}</td>
 										<td>${worklog.hourLogged }</td>
@@ -53,15 +59,7 @@
 														data-target="#delWorklog">
 														<span class="glyphicon glyphicon-trash"></span>
 												</button>
-												<%-- <span data-placement="top" data-toggle="tooltip"
-													title="Delete">
-													<button class=" deleteWorklog btn btn-danger btn-xs"
-														name="${worklog.id}"
-														data-title="Delete" data-toggle="modal"
-														data-target="#delWorklog">
-														<span class="glyphicon glyphicon-trash"></span>
-													</button>
-												</span> --%>
+												
 											</p></td>
 									</tr>
 								</c:forEach>
@@ -80,6 +78,7 @@
 	<!-- Add Worklog Section -Start-->
 	<div class="row">
 		<form class="form-horizontal" id="addWorklogForm" method="post">
+		<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 			<div class="modal fade" id="addWorklog" role="dialog">
 				<div class="modal-dialog">
 
@@ -157,6 +156,7 @@
 				</div>
 
 				<form id="updWorklogForm" action="/updateWorklog/" method="post">
+				<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 					<div class="modal-body">
 						<p id="wlTitle">WorkLog Title</p>
 						<hr />
@@ -191,6 +191,7 @@
 
 	<!-- Delete Worklog Section START -->
 	<form id="delWorklogForm" action="/deleteWorklog/" method="post">
+	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
 		<div class="modal fade" id="delWorklog" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">

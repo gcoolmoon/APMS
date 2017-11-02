@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,9 +23,13 @@ public class Task {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotNull(message = "Title can not be empty!")
 	private String title;
+	@NotNull(message = "Description can not be empty! ")
+	@Size(min=10, max=2000,message="Description must be between 20 and 2000 characters!")
 	private String description;
 	
+	@NotNull(message = "Status cannot be empty!")
 	@Enumerated(EnumType.STRING)	
 	private Status status;
 	
@@ -31,6 +37,7 @@ public class Task {
 	@JsonBackReference
 	private List<WorkLog> workLog;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="backlogId")
 	@JsonBackReference

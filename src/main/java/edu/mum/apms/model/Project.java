@@ -12,12 +12,15 @@ public class Project {
 	private int projectId;
 	private String name;
 	private String description;
+	@ManyToOne(cascade=CascadeType.MERGE)
+    @JoinColumn(name="user_id")
+	private User createdBy;
 	@Temporal(TemporalType.DATE)
 	@OrderBy
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
-	@OneToMany(mappedBy = "project")
+	@OneToMany(mappedBy = "project",cascade = CascadeType.REMOVE)
 	private List<Feature> features;
 	
 	public Project() {}
@@ -37,6 +40,14 @@ public class Project {
 
 	public void setProjectId(int projectId) {
 		this.projectId = projectId;
+	}
+
+	public User getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	public String getName() {

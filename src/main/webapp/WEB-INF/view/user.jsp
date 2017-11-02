@@ -1,3 +1,8 @@
+<%-- <%
+	if (request.getSession().getAttribute("user") == null) {
+		response.sendRedirect("/");
+	}
+%> --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -80,7 +85,7 @@
 				<div class="form-group col-md-12">
 					<label class="col-md-3 control-lable" for="userRoles">Roles</label>
 					<div class="col-md-7">
-					<form:select path="userRoles" multiple="true" >
+					<form:select path="userRoles" multiple="true" class="form-control" >
 					
 <%-- 					  <form:option value=0 label="--- Select ---"/>path="userRoles"  value="${userRoles}" selected="${userRoles}"  --%>
 
