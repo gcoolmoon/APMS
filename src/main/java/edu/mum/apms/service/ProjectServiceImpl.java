@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.mum.apms.dao.ProjectDao;
 import edu.mum.apms.model.Project;
+import edu.mum.apms.model.User;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -31,6 +32,10 @@ public class ProjectServiceImpl implements ProjectService {
 	@Transactional
 	public Project get(int projectId) {
 		return projectDao.findOne(projectId);
+	}
+	@Transactional
+	public List<Project> getByUser(User user) {
+		return projectDao.findByCreatedBy(user);
 	}
 
 	@Transactional

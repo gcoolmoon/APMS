@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+
+//import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class TeamMember {
@@ -16,11 +19,13 @@ public class TeamMember {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotNull(message = "Position cannot be blank!")
 	private String position;
 	
 	@OneToMany(mappedBy="teamMember",cascade = CascadeType.REMOVE)
 	private List<Task> tasksAssigned ;
 	
+	//@NotEmpty(message = "User can not be empty")
 	@OneToOne
 	@JoinColumn(name="userId")
 	private User user;
