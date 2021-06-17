@@ -40,6 +40,7 @@ public class Release {
 		
 	}
 	
+	// constructor for release
 	public Release(int releaseId, String version, String description, Date releaseDate, List<Sprint> sprint) {
 		
 		this.releaseId = releaseId;
